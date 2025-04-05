@@ -346,7 +346,7 @@ changeId(boardId);
     renderListBoards();
     changeId(boardId);
   } else {
-    window.location.href = "../pages/index.html";
+    window.location.href = "../docs/index.html";
   }
   });
   btnCancelCloseBoard.addEventListener("click",function(){
@@ -364,17 +364,17 @@ let closeBoards = document.querySelector(".closeBoards");
 boardsSidebar.addEventListener("click",function(){
   openBoards = true;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = "../docs/index.html";
 });
 starredBoards.addEventListener("click",function(){
   openStarredBoards = true;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = "../docs/index.html";
 });
 closeBoards.addEventListener("click",function(){
   openClosedBoards = true;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = "../docs/index.html";
 });
 
 

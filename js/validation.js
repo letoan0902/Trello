@@ -76,8 +76,8 @@ if(user){
     user=JSON.parse(user);
 } else {
     let currentPath = window.location.pathname;
-    if (currentPath !== "/Project-Trello/pages/signup.html" && currentPath !== "/Project-Trello/pages/login.html") {
-        window.location.href = "/Project-Trello/pages/login.html";
+    if (currentPath !== "../docs/signup.html" && currentPath !== "../docs/login.html") {
+        window.location.href = "../docs/login.html";
     }
 }
 
@@ -87,7 +87,7 @@ if(boardId){
 } else {
     boardId = -1;
     saveData();
-    window.location.href = "../pages/index.html"
+    window.location.href = "../docs/index.html"
 }
 
 let openStarredBoards = localStorage.getItem("openStarredBoards");

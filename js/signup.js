@@ -63,7 +63,7 @@ btnSignUp.addEventListener("click",function(){
         succcessSignUp.classList.add("display");
         setTimeout(() => {
         succcessSignUp.classList.remove("display");
-        window.location = "../pages/login.html";
+        window.location = "../docs/login.html";
         }, 1000);
     }
 });

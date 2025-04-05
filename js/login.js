@@ -48,7 +48,7 @@ btnSignIn.addEventListener("click",function(){
         successSignIn.classList.remove("displayMessage");
         let user = users.find(element => element.email == inputEmail.value.trim())
         localStorage.setItem("user",JSON.stringify(user));
-        window.location = "../pages/index.html";
+        window.location = "../docs/index.html";
         }, 1000);
         
     }

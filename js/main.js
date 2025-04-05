@@ -100,7 +100,7 @@ function renderBoard() {
     overlay.addEventListener("click", function () {
       boardId = el.id;
       saveData();
-      window.location.href = "../pages/board.html"
+      window.location.href = "../docs/board.html"
       });
     listBoards.insertBefore(boardInfo, createBoard);
   });
@@ -121,7 +121,7 @@ function renderBoard() {
     overlay.addEventListener("click", function () {
       boardId = el.id;
       saveData();
-      window.location.href = "../pages/board.html"
+      window.location.href = "../docs/board.html"
       });
     listStarred.appendChild(boardInfoStarred);
   });
@@ -321,7 +321,7 @@ function renderStarredBoard(){
     overlay.addEventListener("click", function () {
       boardId = el.id;
       saveData();
-      window.location.href = "../pages/board.html"
+      window.location.href = "../docs/board.html"
       });
     listStarred.appendChild(boardInfoStarred);
   });

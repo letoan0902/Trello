@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body class="mainLogin">
+    <div class="contentLogin">
+      <img
+        class="logoLogin"
+        src="../css/data/images/trello-logo.png.png"
+        alt=""
+      />
+      <h2 class="headerLogin">Please sign in</h2>
+      <form action="">
+        <input class="inputEmail" type="text" placeholder="Email address" />
+        <input class="inputPassword" type="password" placeholder="Password" />
+        <div class="rememberContainer">
+          <div class="checkbox-wrapper-4 rememberCheckbox">
+            <input class="inp-cbx" id="morning" type="checkbox" />
+            <label class="cbx" for="morning"
+              ><span>
+                <svg width="12px" height="10px">
+                  <use xlink:href="#check-4"></use></svg></span
+            ></label>
+            <svg class="inline-svg">
+              <symbol id="check-4" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+              </symbol>
+            </svg>
+          </div>
+          <span class="rememberText">Remember me</span>
+        </div>
+      </form>
+      <div class="noAccountContainer">
+        <span class="noAccountText">Don't have an account,</span>
+        <a class="signUpRedirect" href="./signup.html">click here !</a>
+      </div>
+      <button class="btnSignIn">Sign in</button>
+      <p class="copyrightRikkei">© 2025 - Rikkei Education</p>
+    </div>
+    
+    <div class="errorMessage">
+      <header class="headerErrorSignin">
+        <span class="textHeaderError">
+          <img
+            class="imgHeader"
+            src="../css/data/icons/remove_circle.png"
+            alt=""
+          />
+          <span class="textError">Error</span>
+        </span>
+        <img
+          class="btnCloseError"
+          src="../css/data/icons/_BaseCloseButton.png"
+          alt=""
+        />
+      </header>
+      <div class="textBodyError">
+        <span class="textDetailed">Mật khẩu không được bỏ trống</span>
+        <span class="textDetailed">Email không được bỏ trống</span>
+      </div>
+    </div>
+    <div class="successSignIn">
+      <div class="bodySuccess">
+        <img
+          class="iconSuccess"
+          src="../css/data/icons/check_circle.png"
+          alt=""
+        />
+        <span class="textSuccess">Đăng nhập thành công</span>
+      </div>
+    </div>
+  </body>
+  <script src="../js/validation.js"></script>
+  <script src="../js/login.js"></script>
+</html>

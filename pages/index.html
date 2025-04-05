@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body>
+    <header class="headerMain">
+      <div class="headerSidebar">
+        <img
+          class="logoTrello"
+          src="../css/data/images/trello-logo-full.png.png"
+          alt=""
+        />
+      </div>
+      <div class="headerDashboards">
+        <div class="mediaHeaderBoard">
+          <div class="searchDashboard">
+            <img
+              class="searchDashboardIcon"
+              src="../css/data/icons/search-dashboard.png"
+              alt=""
+            />
+          </div>
+          <div class="listDashboardMedia">
+            <img
+              class="listDashboardMediaIcon"
+              src="../css/data/icons/list-dashboard.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="containerDashboard">
+      <div class="overlaySidebar"></div>
+      <div class="sidebar">
+        <div class="headerSidebarMedia">
+          <img
+            class="logoTrello"
+            src="../css/data/images/trello-logo-full.png.png"
+            alt=""
+          />
+        </div>
+        <span class="headingSidebar">YOUR WORKSPACES</span>
+        <div class="listNavbar">
+          <div class="boardsSidebar typeSidebar">
+            <img
+              class="icons"
+              src="../css/data/images/list-dashboard.png"
+              alt=""
+            />
+            <span class="textIcons">Boards</span>
+          </div>
+          <div class="starredBoards typeSidebar">
+            <img
+              class="icons"
+              src="../css/data/images/star-dashboard.png"
+              alt=""
+            />
+            <span class="textIcons">Starred Boards</span>
+          </div>
+          <div class="closeBoards typeSidebar">
+            <img
+              class="icons"
+              src="../css/data/images/close-dashboard.png"
+              alt=""
+            />
+            <span class="textIcons">Closed Boards</span>
+          </div>
+        </div>
+        <div class="lineSidebar"></div>
+        <div class="listNavbar">
+          <div class="settingSidebar typeSidebar">
+            <img
+              class="icons"
+              src="../css/data/images/setting-dashboard.png"
+              alt=""
+            />
+            <span class="textIcons">Settings</span>
+          </div>
+          <div class="SignOut typeSidebar">
+            <img
+              class="icons"
+              src="../css/data/images/signout-dashboard.png"
+              alt=""
+            />
+            <span class="textIcons">Sign out</span>
+          </div>
+        </div>
+      </div>
+      <div class="contentDashboard">
+        <div class="headerContent">
+          <div class="block1">
+            <img
+              class="listContentIcon"
+              src="../css/data/images/list-content-dashboard.png"
+              alt=""
+            />
+            <h1 class="textList">Your Workspaces</h1>
+          </div>
+          <div class="block2">
+            <div class="actionContent">
+              <div class="shareAction actionInfo">Share</div>
+              <div class="exportAction actionInfo">Export</div>
+            </div>
+            <div class="filterTime">
+              <img
+                class="calendarIcon"
+                src="../css/data/images/calendar-content.png"
+                alt=""
+              />
+              <select class="selectCalendar" name="" id="">
+                <option class="optionCalendar" value="week">This week</option>
+                <option class="optionCalendar" value="month">This month</option>
+                <option class="optionCalendar" value="year">This year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="listBoards">
+          <div class="boardInfo">
+            <img
+              class="backgroundBoard"
+              src="../css/data/images/board1.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoard">Board Title 01</span>
+            <div class="editBoard">
+              <img src="../css/data/icons/iconEditBoard.png" alt="">
+              <span class="textEdit">Edit this board</span>
+            </div>
+          </div>
+          <div class="boardInfo">
+            <img
+              class="backgroundBoard"
+              src="../css/data/images/board2.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoard">Board Title 02</span>
+          </div>
+          <div class="boardInfo">
+            <img
+              class="backgroundBoard"
+              src="../css/data/images/board3.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoard">Board Title 03</span>
+          </div>
+          <div class="boardInfo">
+            <img
+              class="backgroundBoard"
+              src="../css/data/images/board4.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoard">Board Title 04</span>
+          </div>
+          <div class="createBoard">
+            <button class="btnCreateBoard">Create new board</button>
+          </div>
+        </div>
+        <div class="headerStarred">
+          <div class="textHeaderStarred">
+            <img
+              class="listContentIcon"
+              src="../css/data/images/starred-dashboard.png"
+              alt=""
+            />
+            <h1 class="textList textListStarred">Starred Boards</h1>
+          </div>
+        </div>
+        <div class="listStarred">
+          <div class="boardInfoStarred">
+            <img
+              class="backgroundBoardStarred"
+              src="../css/data/images/board1-starred.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoardStarred">Important Board 01</span>
+          </div>
+          <div class="boardInfoStarred">
+            <img
+              class="backgroundBoardStarred"
+              src="../css/data/images/board2-starred.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoardStarred">Important Board 02</span>
+          </div>
+        </div>
+        
+        <div class="headerClosed">
+          <div class="textHeaderClosed">
+            <img
+              class="listContentIcon"
+              src="../css/data/icons/closed-boards.png"
+              alt=""
+            />
+            <h1 class="textList textListClosed">Closed Boards</h1>
+          </div>
+        </div>
+        <div class="listClosed">
+          <div class="boardInfoClosed">
+            <img
+              class="backgroundBoardClosed"
+              src="../css/data/images/board1-starred.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoardClosed">Important Board 01</span>
+          </div>
+          <div class="boardInfoClosed">
+            <img
+              class="backgroundBoardClosed"
+              src="../css/data/images/board2-starred.jpg"
+              alt=""
+            />
+            <div class="overlay"></div>
+            <span class="titleBoardClosed">Important Board 02</span>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="overlayModalCreate"></div>
+    <div class="modalCreateBoard">
+      <div class="headerModalCreate">
+        <h2 class="textHeaderCreate">Create board</h2>
+        <div class="closeModalCreate">
+          <img
+            class="btnClose"
+            src="../css/data/icons/close-modal-create.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="contentCreateBoard">
+        <div class="choiceBackgroundCreate">
+          <h2 class="textModalBackground">Background</h2>
+          <div class="listBackgroundCreate">
+            <div class="backgroundCreateInfo">
+              <img
+                class="imgBackground"
+                src="../css/data/images/board1.jpg"
+                alt=""
+              />
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="backgroundCreateInfo">
+              <img
+                class="imgBackground"
+                src="../css/data/images/board2.jpg"
+                alt=""
+              />
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="backgroundCreateInfo">
+              <img
+                class="imgBackground"
+                src="../css/data/images/board3.jpg"
+                alt=""
+              />
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="backgroundCreateInfo">
+              <img
+                class="imgBackground"
+                src="../css/data/images/board4.jpg"
+                alt=""
+              />
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="lineModalCreate"></div>
+        <div class="choiceColorCreate">
+          <h2 class="textModalColor">Color</h2>
+          <div class="listColorCreate">
+            <div class="colorCreateInfo">
+              <div class="color1"></div>
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="colorCreateInfo">
+              <div class="color2"></div>
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="colorCreateInfo">
+              <div class="color3"></div>
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="colorCreateInfo">
+              <div class="color4"></div>
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="colorCreateInfo">
+              <div class="color5"></div>
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+            <div class="colorCreateInfo">
+              <div class="color6"></div>
+              <img
+                class="selectIconCreate"
+                src="../css/data/icons/selected-icon-create.svg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="lineModalCreate"></div>
+        <div class="boardTitleModal">
+          <h2 class="textBoardTitle">Board title <span>*</span></h2>
+          <input
+            class="inputTitle"
+            type="text"
+            placeholder="E.g. Shopping list for birthday..."
+          />
+          <p class="noticeTitle">👋 Please provide a valid board title.</p>
+        </div>
+      </div>
+      <div class="footerModalCreate">
+        <div class="selectButtonCreate">
+          <button class="closeModalCreateFooter">Close</button>
+          <button class="createNewBoard">Create</button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/validation.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

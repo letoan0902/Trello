@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/signup.css" />
+  </head>
+  <body class="mainSignUp">
+    <div class="contentSignUp">
+      <img
+        class="logoSignUp"
+        src="../css/data/images/trello-logo.png.png"
+        alt=""
+      />
+      <h2 class="headerSignUp">Please sign up</h2>
+      <form action="">
+        <input class="inputEmail" type="text" placeholder="Email address" />
+        <input class="inputUsername" type="text" placeholder="Username" />
+        <input class="inputPassword" type="password" placeholder="Password" />
+      </form>
+      <div class="haveAccountContainer">
+        <span class="haveAccountText">Already have an account,</span>
+        <a class="loginRedirect" href="./login.html">click here !</a>
+      </div>
+      <button class="btnSignUp">Sign up</button>
+      <p class="copyrightRikkei">© 2025 - Rikkei Education</p>
+    </div>
+    <div class="errorMessage">
+      <header class="headerErrorSignUp">
+        <span class="textHeaderError">
+          <img
+            class="imgHeader"
+            src="../css/data/icons/remove_circle.png"
+            alt=""
+          />
+          <span class="textError">Error</span>
+        </span>
+        <img
+          class="btnCloseError"
+          src="../css/data/icons/_BaseCloseButton.png"
+          alt=""
+        />
+      </header>
+      <div class="textBodyError">
+        <!-- <span class="textDetailed">Mật khẩu không được bỏ trống</span>
+          <span class="textDetailed">Email không được bỏ trống</span> -->
+      </div>
+    </div>
+    <div class="succcessSignUp">
+      <div class="bodySuccess">
+        <img
+          class="iconSuccess"
+          src="../css/data/icons/check_circle.png"
+          alt=""
+        />
+        <span class="textSuccess">Đăng ký thành công</span>
+      </div>
+    </div>
+    <script src="../js/validation.js"></script>
+    <script src="../js/signup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,298 @@
+* {
+    font-size: 16px;
+    color: #212529;
+  }
+  .mainSignUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(0deg, #F8F9FA 0%, #F8F9FA 100%), #FFF;
+  }
+  .contentSignUp {
+    width: 100%;
+    max-width: 298px;
+    display: flex;
+    flex-direction: column;
+  }
+  .logoSignUp {
+    width: 150px;
+    height: 42.55px;
+    margin: 0px auto;
+  }
+  .headerSignUp {
+    margin-top: 24px;
+    margin-bottom: 17.59px;
+    font-size: 26.58px;
+    line-height: 33.6px;
+    color: rgba(33, 37, 41, 1);
+  }
+  .inputEmail {
+    width: 100%;
+    display: flex;
+    max-width: 296px;
+    height: 56px;
+    align-items: center;
+    border-radius: 6px 6px 0px 0px;
+    border: 1px solid #dee2e6;
+    outline: none;
+    padding-left: 12px;
+  }
+  .inputUsername {
+    width: 100%;
+    display: flex;
+    max-width: 296px;
+    height: 56px;
+    align-items: center;
+    border: 1px solid #dee2e6;
+    outline: none;
+    padding-left: 12px;
+  }
+  .inputPassword {
+    width: 100%;
+    display: flex;
+    max-width: 296px;
+    height: 56px;
+    align-items: center;
+    border-radius: 0px 0px 6px 6px;
+    border: 1px solid #dee2e6;
+    outline: none;
+    padding-left: 12px;
+  }
+  .rememberContainer {
+    margin-top: 17px;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    gap: 8px;
+  }
+
+  .haveAccountContainer {
+    height: 24px;
+    display: flex;
+    margin-top: 11px;
+    margin-bottom: 16px;
+  }
+  .haveAccountText {
+    width: 187px;
+  }
+
+  .loginRedirect {
+    color: #0d6efd;
+  }
+  .btnSignUp {
+    width: 100%;
+    max-width: 298px;
+    height: 42px;
+    border-radius: 6px;
+    border: 1px solid #0d6efd;
+    background: #0d6efd;
+    color: white;
+    cursor: pointer;
+  }
+  .btnSignUp:hover {
+    background: #0055d4;
+  }
+  .copyrightRikkei {
+    height: 24px;
+    color: rgba(33, 37, 41, 0.75);
+    margin-top: 48px;
+  }
+  input::placeholder {
+    color: #212529;
+  }
+
+  .errorMessage {
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    width: 80%;
+    max-width: 299px;
+    gap: 8px;
+    border-radius: 10px;
+    background: #ffe5e8;
+    position: fixed;
+    top: 22px;
+    left: 26px;
+    display: none;
+  }
+  .headerErrorSignUp {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .textHeaderError {
+    height: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .textDetailed {
+    padding-left: 24px;
+  }
+  .textError {
+    color: #11151f;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+  }
+  .btnCloseError {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 100%;
+  }
+
+  .btnCloseError:hover {
+    background-color: #bcbcbc;
+  }
+  .textBodyError {
+    color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    flex-direction: column;
+  }
+  .succcessSignUp {
+    width: 80%;
+    max-width: 299px;
+    height: 58px;
+    padding: 16px 16px 18px 16px;
+    border-radius: 10px;
+    background: #e5fff0;
+    position: fixed;
+    top: 22px; /* 148px */
+    left: 26px;
+    display: none;
+  }
+  .bodySuccess {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .textSuccess {
+    color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  @media (max-width: 767px) {
+    .errorMessage {
+      display: flex;
+      padding: 8px;
+      flex-direction: column;
+      width: 80%;
+      max-width: 150px;
+      gap: 4px;
+      border-radius: 5px;
+      background: #ffe5e8;
+      position: fixed;
+      top: 11px;
+      left: 13px;
+      display: none;
+    }
+
+    .headerErrorSignUp {
+      height: 12px;
+      width: 134px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .textHeaderError {
+      height: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .textError {
+      color: #11151f;
+      font-size: 8px;
+      font-weight: 500;
+      font-family: "Inter", sans-serif;
+    }
+
+    .btnCloseError {
+      width: 12px;
+      height: 12px;
+      cursor: pointer;
+      border-radius: 100%;
+    }
+
+    .btnCloseError:hover {
+      background-color: #bcbcbc;
+    }
+
+    .textBodyError {
+      color: #000;
+      font-family: "Inter", sans-serif;
+      font-size: 7px;
+      line-height: 11px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .succcessSignUp {
+      width: 150px;
+      height: 29px;
+      padding: 8px 8px 9px 8px;
+      border-radius: 5px;
+      background: #e5fff0;
+      position: fixed;
+      top: 11px; /* 95px */
+      left: 13px;
+      display: none;
+    }
+
+    .bodySuccess {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .textSuccess {
+      color: #000;
+      font-family: "Inter", sans-serif;
+      font-size: 7px;
+      line-height: 7px;
+    }
+    .textDetailed,
+    .textSuccess {
+      font-size: 8px;
+    }
+    .textDetailed{
+      padding-left: 12px;
+      height: 12px;
+    }
+    .iconSuccess {
+      width: 12px;
+      height: 12px;
+    }
+    .imgHeader {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  .display {
+    display: block;
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }

@@ -56,8 +56,8 @@ if (user) {
   let currentPath = window.location.pathname;
 
   if (
-    currentPath !== "/Project-Trello%20copy/pages/signup.html" &&
-    currentPath !== "/Project-Trello%20copy/pages/login.html"
+    currentPath !== "/Project-FrontEnd-Trello/pages/signup.html" &&
+    currentPath !== "/Project-FrontEnd-Trello/pages/login.html"
   ) {
     window.location.href = "../pages/login.html";
   }

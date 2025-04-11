@@ -1,0 +1,1936 @@
+* {
+  font-size: 14px;
+}
+.headerMain {
+  height: 48px;
+  background: #f8f9fa;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  width: 100vw;
+  z-index: 1000;
+}
+.headerSidebar {
+  height: 100%;
+  width: 240px;
+  display: flex;
+  align-items: center;
+  box-shadow: -1px 0px 0px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.logoTrello {
+  margin-left: 16px;
+  width: 80px;
+  height: 16.35px;
+}
+.containerDashboard {
+  display: flex;
+}
+.sidebar {
+  position: fixed;
+  top: 48px;
+  height: calc(100vh - 48px);
+  border: 1px solid #dee2e6;
+  background: #f8f9fa;
+  width: 240px;
+}
+.contentBoard {
+  margin-left: 240px;
+  margin-top: 48px;
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 48px);
+}
+.headingSidebar {
+  display: inline-block;
+  margin-top: 40px;
+  margin-left: 16px;
+  margin-bottom: 4px;
+  color: rgba(33, 37, 41, 0.75);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.4px;
+}
+.icons {
+  width: 16px;
+  height: 16px;
+}
+.icons:hover {
+  background-color: #cecece;
+}
+.textIcons {
+  color: #0d6efd;
+  font-size: 14px;
+  font-weight: 500;
+}
+.typeSidebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 16px;
+  height: 40px;
+  cursor: pointer;
+}
+.typeSidebar:hover {
+  background: #cecece;
+}
+.lineSidebar {
+  height: 1px;
+  flex-shrink: 0;
+  border-top: 1px solid #212529;
+  opacity: 0.25;
+  margin-top: 16px;
+  margin-bottom: 9px;
+}
+
+.mediaHeaderBoard {
+  display: none;
+}
+
+.headerSidebarMedia {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 998;
+    height: 100vh;
+    width: 90%;
+    max-width: 399px;
+    transform: translateX(100%);
+  }
+  .mediaHeaderBoard {
+    display: block;
+  }
+  .headerSidebarMedia {
+    display: flex;
+    align-items: center;
+    height: 62px;
+  }
+  .headingSidebar {
+    margin-top: 24px;
+  }
+
+  .headerSidebar {
+    width: 112px;
+    height: 48px;
+  }
+  .headerDashboards {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  .mediaHeaderBoard {
+    display: flex;
+    align-self: center;
+  }
+
+  .displaySidebar {
+    display: block;
+    animation: showSidebar 0.5s ease forwards;
+    z-index: 1001;
+  }
+
+  @keyframes showSidebar {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .hiddenSidebar {
+    display: block;
+    animation: hiddenSidebar 0.5s ease forwards;
+    z-index: 1001;
+  }
+
+  @keyframes hiddenSidebar {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  .overlaySidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .showOverlaySidebar {
+    display: block;
+    opacity: 1;
+  }
+  .searchDashboardIcon {
+    width: 16px;
+    height: 16px;
+  }
+  .listDashboardMedia,
+  .searchDashboard {
+    width: 48px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .listDashboardMedia:hover,
+  .searchDashboard:hover {
+    background-color: #cecece;
+  }
+
+  .listDashboardMediaIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .contentBoard {
+    margin-left: 0px;
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContent {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.headerYourBoards {
+  width: 100%;
+  height: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.textHeaderYourBoard {
+  color: #172b4d;
+  font-weight: 600;
+  letter-spacing: -0.042px;
+}
+.plusYourboard {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.plusYourboard:hover {
+  background-color: #cecece;
+  transition: background-color 0.3s ease;
+}
+
+.iconPlusYourboard {
+  width: 16px;
+  height: 16px;
+}
+.listYourBoards {
+  overflow-y: auto;
+  height: 385px;
+}
+
+.yourBoardInfo {
+  padding-left: 14px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.yourBoardInfo:hover,
+.starredBoard:hover,
+.tableBoard:hover,
+.block2:hover,
+.collapseMainCard:hover,
+.iconMoreTask:hover,
+.btnCloseFilter:hover,
+.taskInfo:hover,
+.btncloseBoard:hover,
+.dateEdit:hover,
+.labelEdit:hover,
+.selectModalDetail:hover,
+.btnCloseMoveCard:hover,
+.closeCreateLabel:hover,
+.returnCreateLabel:hover,
+.btnCloseModalDate:hover,
+.btnRemoveModalDate:hover,
+.btnDeleteList:hover,
+.block1Footer:hover,
+.closeAddACard:hover,
+.block1AddList:hover,
+.closeAddList:hover,
+.closeLabel:hover,
+.btnLabel:hover,
+.editLabel:hover {
+  background: rgba(0, 0, 0, 0.16);
+  transition: background 0.3s ease;
+}
+
+.backgroundYourBoard {
+  width: 24px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+.backgroundBoardInfo {
+  width: 24px;
+  height: 20px;
+  border-radius: 2px;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.textYourBoard {
+  width: 100%;
+  color: #172b4d;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 30%;
+}
+
+.headerBoard {
+  background: #f1f2f4;
+  backdrop-filter: blur(2px);
+  min-height: 56px;
+  padding-left: 22px;
+  padding-right: 20px;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  width: 100%;
+  left: 240px;
+  top: 0;
+}
+.headerBoard img {
+  width: 16px;
+  height: 16px;
+}
+.block1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.textInfoBoard {
+  max-width: calc(100% - 360px);
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #172b4d;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  padding-right: 28px;
+  white-space: wrap;
+}
+.starredBoard {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  margin-right: 24px;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.starredBoard:hover {
+  opacity: 0.8;
+}
+.btnBoard {
+  display: flex;
+  width: 85px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.textBtnBoard {
+  color: #fff;
+  font-weight: 500;
+  line-height: 32px;
+}
+.tableBoard {
+  display: flex;
+  width: 81px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.textTable {
+  color: #172b4d;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.btncloseBoard {
+  height: 32px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 0px 4px;
+}
+.textCloseBoard {
+  color: #172b4d;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.block2 {
+  display: flex;
+  width: 77px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.textFilterBlock2 {
+  color: #172b4d;
+  text-align: center;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.mainBoard {
+  padding-top: 33px;
+  padding-left: 24px;
+  display: flex;
+  gap: 17px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: calc(100% - 58px);
+}
+.listMainCard {
+  width: 272px;
+  border-radius: 12px;
+  background: #f1f2f4;
+  box-shadow: 0px 1px 1px 0px rgba(9, 30, 66, 0.25),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  padding: 8px;
+  height: fit-content;
+  flex-shrink: 0;
+  line-break: anywhere;
+}
+
+.listTasks img,
+.footerTask img,
+.iconMoreTask {
+  width: 16px;
+  height: 16px;
+}
+
+.headerMainCard {
+  min-height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  margin-bottom: 8px;
+  position: relative;
+}
+.textMainCard {
+  width: 100%;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  color: #172b4d;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: wrap;
+}
+.iconsHeaderMainCard {
+  display: flex;
+  align-items: center;
+}
+.collapseMainCard {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.iconMoreTask {
+  margin-left: 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconMoreTask img {
+  width: 16px;
+  height: 16px;
+}
+.listTasks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 370px;
+  overflow-y: auto;
+}
+.taskInfo {
+  height: 36px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 1px 1px 0px rgba(9, 30, 66, 0.25),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  gap: 6px;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.taskComplete {
+  color: #626f86;
+}
+
+.textTask {
+  color: #172b4d;
+  line-height: 20px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 20%;
+}
+.footerTask {
+  position: relative;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* height: 32px; */
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.block1Footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.btnDeleteList {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  border-radius: 4px;
+  z-index: 800;
+}
+/* Modal Filter */
+
+.modalFilter {
+  display: flex;
+  width: 384px;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 8px 12px 0px rgba(9, 30, 66, 0.15),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+}
+.modalFilter {
+  position: fixed;
+  top: 1%;
+  right: 6%;
+  display: none;
+  z-index: 1001;
+}
+
+.displayModalFilter {
+  display: block;
+}
+
+.modalFilter img {
+  width: 16px;
+  height: 16px;
+}
+
+.headerModalFilter {
+  position: relative;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textHeaderFilter {
+  color: #44546f;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.042px;
+}
+.btnCloseFilter {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.mainModalFilter {
+  padding: 16px 20px 30px 12px;
+}
+.filterKeyword {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.textFilter {
+  color: #44546f;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: left;
+  margin-bottom: 8px;
+}
+.inputSearch {
+  height: 36px;
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  outline: none;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0px 0px 0px 1px #8590a2 inset;
+  border: none;
+}
+
+.inputSearch::placeholder {
+  color: #626f86;
+}
+.searchCard {
+  color: #44546f;
+  font-size: 11px;
+  line-height: 14px;
+}
+.filterStatus {
+  margin-top: 21px;
+  margin-bottom: 8px;
+}
+.completeStatus {
+  height: 36px;
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.textFilterDetail {
+  color: #172b4d;
+  line-height: 20px;
+}
+.blockDueDateMain {
+  margin-bottom: 16px;
+}
+.noDate {
+  height: 40px;
+}
+.blockDueDate {
+  height: 40px;
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+}
+.blockNoDate {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: rgba(9, 30, 66, 0.06);
+  margin-left: 16px;
+  margin-right: 8px;
+}
+
+.textFilterNo {
+  color: #44546f;
+  line-height: 20px;
+}
+.blockOverDue {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #c9372c;
+  margin-left: 16px;
+  margin-right: 8px;
+}
+
+.blockDueNext {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #f5cd47;
+  margin-left: 16px;
+  margin-right: 8px;
+}
+.blockLabel {
+  height: 40px;
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+}
+.blockNoLabel {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  border-radius: 12px;
+  background: rgba(9, 30, 66, 0.06);
+  margin-left: 16px;
+}
+.blockNoLabelMain {
+  padding-left: 8px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+.checkboxFilter {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.listLabelFilter {
+  width: 100%;
+  height: 32px;
+  border-radius: 3px;
+  margin-left: 16px;
+}
+.labelFilter1 {
+  background: #4bce97;
+}
+.labelFilter2 {
+  background: #f5cd47;
+}
+.labelFilter3 {
+  background: #fea362;
+}
+.selectLabel {
+  position: relative;
+}
+.textSelectFilter {
+  color: #626f86;
+  line-height: 20px;
+  margin-left: 25px;
+}
+.iconOpenFilter {
+  width: 24px !important;
+  height: 24px !important;
+  position: absolute;
+  right: 7px;
+  top: 8px;
+  cursor: pointer;
+}
+
+/* Modal Close Board */
+
+.modalCloseBoard {
+  width: 512px;
+  border-radius: 5px;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1010;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  display: none;
+}
+.headerModalCloseBoard {
+  color: #545454;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 45px;
+  margin-top: 37px;
+}
+
+.modalCloseBoard img {
+  width: 88px;
+  height: 88px;
+  margin-top: 40px;
+}
+
+.textModalCloseBoard {
+  color: #545454;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 23px;
+}
+.actionModalCloseBoard {
+  margin-top: 30px;
+  margin-bottom: 25px;
+  display: flex;
+  gap: 10px;
+}
+.btnAngreeCLoseBoard {
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  height: 39px;
+  width: 138px;
+  border-radius: 4px;
+  background: #3085d6;
+  border: none;
+  cursor: pointer;
+}
+.btnAngreeCLoseBoard:hover {
+  background: #276dae;
+}
+
+.btnCancelCloseBoard {
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  height: 39px;
+  width: 89px;
+  border-radius: 4px;
+  background: #d33;
+  border: none;
+  cursor: pointer;
+}
+.btnCancelCloseBoard:hover {
+  background: rgb(175, 40, 40);
+}
+
+/* Display Modal Close Board */
+
+.displayModalCloseBoard {
+  display: flex;
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -50%) translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* Css checkbox */
+.checkbox-wrapper-18 .round {
+  position: relative;
+}
+
+.checkbox-wrapper-18 .round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+.checkbox-wrapper-18 .round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 4px;
+  left: 3px;
+  opacity: 0;
+  position: absolute;
+  top: 5px;
+  transform: rotate(-45deg);
+  width: 8px;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+/* Modal Detail */
+
+.modalDetail {
+  width: 768px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  padding: 16px 16px 40px 16px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  display: none;
+}
+.headerModalDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.block1ModalDetail {
+  min-height: 36px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.titleBoardDetail {
+  color: #172b4d;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.block2ModalDetail {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 40px;
+}
+.textBlock2Detail {
+  color: #44546f;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+.selectModalDetail {
+  height: 16px;
+  border-radius: 3px;
+  padding: 0px 4px;
+  background: #dcdfe4;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.selectModalDetail img {
+  width: 14px;
+  height: 14px;
+}
+.textSelectDetail {
+  height: 16px;
+  color: #44546f;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 1px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mainModalDetail {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.descriptionHeader {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.iconDescription {
+  width: 24px;
+  height: 24px;
+}
+.textDescription {
+  color: #172b4d;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.textareaDetail {
+  width: 512px;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0px 0px 0px 1px #8590a2 inset;
+  margin-bottom: 8px;
+  margin-left: 40px;
+}
+.ck-editor__editable_inline {
+  height: 245px;
+}
+.actionModalDetail {
+  margin-left: 40px;
+}
+.saveDetail {
+  width: 56px;
+  height: 32px;
+  border-radius: 3px;
+  background: #0c66e4;
+  color: #fff;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  cursor: pointer;
+}
+.saveDetail:hover {
+  background: #0b57c1;
+}
+.cancelDetail {
+  height: 32px;
+  border-radius: 3px;
+  width: 69px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+.cancelDetail:hover {
+  background: red;
+  color: white;
+  transition: background 0.5s ease;
+}
+.block2MainDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.block2MainDetail img {
+  width: 16px;
+  height: 16px;
+}
+.labelEdit,
+.dateEdit,
+.deleteTask {
+  display: flex;
+  width: 168px;
+  height: 32px;
+  gap: 8px;
+  align-items: center;
+  border-radius: 3px;
+  background: rgba(9, 30, 66, 0.06);
+  padding-left: 12px;
+  cursor: pointer;
+}
+.textInfoDetail {
+  color: #172b4d;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.deleteTask {
+  background: #c9372c;
+}
+.deleteTask:hover,
+.btnDeleteLabel:hover {
+  background: #af3027;
+  transition: background 0.3s ease;
+}
+.textDeleteTask {
+  font-weight: 500;
+  line-height: 20px;
+  color: #fff;
+}
+/* Display Modal Detail */
+
+.displayModalDetail {
+  display: block;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.modalMove {
+  width: 304px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 8px 12px 0px rgba(9, 30, 66, 0.15),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1003;
+  display: none;
+}
+.headerModalMove {
+  height: 48px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textHeaderMoveCard {
+  color: #44546f;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.042px;
+}
+.btnCloseMoveCard {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border-radius: 8px;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.iconCloseMoveCard {
+  width: 16px;
+  height: 16px;
+}
+.mainModalMove {
+  padding: 16px 12px 12px 12px;
+}
+.mainModalMove img {
+  width: 24px;
+  height: 24px;
+}
+.textMainMove {
+  color: #44546f;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: 20px;
+}
+.textBlockMoveCard {
+  color: #172b4d;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+.inputBoardMove {
+  height: 40px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #8590a2;
+  background: #fff;
+  padding-left: 9px;
+  padding-right: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 32px;
+  outline: none;
+  color: #172b4d;
+  line-height: 20px;
+}
+.moveListMain {
+  display: flex;
+  gap: 9px;
+}
+
+.moveBlockCard {
+  width: 194px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 8px;
+  padding-right: 12px;
+  border-radius: 3px;
+  border: 1px solid #8590a2;
+  background: #fff;
+  cursor: pointer;
+}
+
+.listMoveCard {
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.positionMoveCard {
+  width: 78px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #8590a2;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  position: relative;
+  cursor: pointer;
+}
+.textPosition {
+  color: #172b4d;
+  line-height: 20px;
+}
+.iconOpenBlockMove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.btnMoveCard {
+  margin-top: 16px;
+  width: 83px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  background: #0c66e4;
+  color: #fff;
+  font-weight: 500;
+  line-height: 20px;
+}
+.btnMoveCard:hover,
+.btnCreateLabel:hover,
+.btnSaveModalDate:hover,
+.btnAddList:hover,
+.btnAddACard:hover {
+  background: #0a53ba;
+}
+
+/* Display Modal Move Card */
+
+.displayModalMoveCard {
+  display: block;
+  animation: slideIn 0.3s ease forwards;
+}
+.overlayModal {
+  z-index: 1000;
+}
+
+.overlayModal2,
+.overlayModal3,
+.overlayModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlayModal2 {
+  z-index: 1002;
+}
+.overlayModal3 {
+  z-index: 1004;
+}
+.overlayModal2.show,
+.overlayModal3.show,
+.overlayModal.show {
+  display: block;
+  opacity: 1;
+}
+
+.modalCreateLabel,
+.modalLabel {
+  width: 304px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 8px 12px 0px rgba(9, 30, 66, 0.15),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.modalCreateLabel {
+  z-index: 1005;
+}
+
+.headerCreateLabel {
+  height: 48px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headerCreateLabel img {
+  width: 16px;
+  height: 16px;
+}
+.returnCreateLabel {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.textHeaderCreateLabel {
+  color: #44546f;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.042px;
+}
+
+.closeCreateLabel {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.mainCreateLabel,
+.mainLabel {
+  padding: 12px;
+}
+.textMainCreateLabel {
+  color: #44546f;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+.inputTitleLabel {
+  width: 100%;
+  height: 36px;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0px 0px 0px 1px #8590a2 inset;
+  outline: none;
+  border: none;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  color: #164b35;
+  font-weight: 500;
+  line-height: 32px;
+}
+.listColorCreateLabel {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  gap: 8px;
+  margin-top: 10px;
+}
+.colorLabel {
+  width: calc(20% - 6.5px);
+  height: 32px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.colorLabel1 {
+  background: #baf3db;
+}
+.colorLabel2 {
+  background: #f8e6a0;
+}
+.colorLabel3 {
+  background: #fedec8;
+}
+.colorLabel4 {
+  background: #ffd5d2;
+}
+.colorLabel5 {
+  background: #dfd8fd;
+}
+.colorLabel6 {
+  background: #4bce97;
+}
+.colorLabel7 {
+  background: #f5cd47;
+}
+.colorLabel8 {
+  background: #fea362;
+}
+.colorLabel9 {
+  background: #f87168;
+}
+.colorLabel10 {
+  background: #9f8fef;
+}
+.lineCreateLabel {
+  height: 1px;
+  background: rgba(9, 30, 66, 0.14);
+  margin-top: 18px;
+  margin-bottom: 16px;
+}
+.btnCreateLabel {
+  width: 68.04px;
+  height: 32px;
+  color: #fff;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  border-radius: 3px;
+  background: #0c66e4;
+  cursor: pointer;
+}
+
+.btnDeleteLabel {
+  width: 68px;
+  height: 32px;
+  color: #fff;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  border-radius: 3px;
+  background: #c9372c;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: none;
+}
+.footerCreateLabel {
+  width: 100%;
+  position: relative;
+}
+.showBtnDeteleLabel {
+  display: block;
+}
+/* Display Modal Create Label */
+.displayModalCreateLabel {
+  display: block;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.displayModalLabel {
+  display: block;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.modalDate {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 8px 12px 0px rgba(9, 30, 66, 0.15),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1003;
+  display: none;
+}
+
+.displayModalDate {
+  display: block;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.headerModalDate {
+  width: 100%;
+  position: relative;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headerModalDate img {
+  width: 16px;
+  height: 16px;
+}
+.textHeaderModalDate {
+  color: #44546f;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.042px;
+}
+.btnCloseModalDate {
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+.mainModalDate {
+  padding: 0px 12px 12px 12px;
+}
+.btnSaveModalDate {
+  width: 100%;
+  height: 32px;
+  border-radius: 3px;
+  background: #0c66e4;
+  color: #fff;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 8px;
+  border: none;
+  cursor: pointer;
+}
+.btnRemoveModalDate {
+  width: 100%;
+  height: 32px;
+  border-radius: 3px;
+  background: rgba(9, 30, 66, 0.06);
+  margin-top: 8px;
+  color: #172b4d;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.flatpickr-calendar {
+  max-height: 300px;
+}
+
+.flatpickr-month {
+  height: 40px;
+}
+
+.flatpickr-days {
+  height: 240px;
+}
+
+.dateInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  margin-bottom: 12px;
+}
+
+.dateInput input[type="checkbox"] {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.labelDate {
+  display: block;
+  color: #44546f;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  margin-bottom: 4px;
+}
+.labelStartDate {
+  margin-top: 25px;
+}
+.startDueDate,
+.dueDate {
+  display: inline-block;
+  border-radius: 3px;
+  background: #fff;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 0px 1px #8590a2 inset;
+  width: 90px;
+  color: #172b4d;
+  font-size: 13px;
+  line-height: 20px;
+  padding-left: 6px;
+  height: 32px;
+}
+.dueDate {
+  width: 167px;
+}
+
+.selectYourBoard {
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.addListCard {
+  width: 272px;
+  height: fit-content;
+  background: #f1f2f4;
+  border-radius: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.addListCard img {
+  width: 16px;
+  height: 16px;
+}
+
+.textFooterTask {
+  color: #172b4d;
+  font-weight: 500;
+  line-height: 20px;
+}
+.btnAddList {
+  width: 73px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 3px;
+  background: #0c66e4;
+  color: #fff;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+}
+
+.displayMessage {
+  display: block;
+  animation: displayAction 0.3s ease forwards;
+}
+
+@keyframes displayAction {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.errorMessage,
+.successSignIn {
+  top: 60px !important;
+  z-index: 1005;
+}
+
+.displayBtnAddCard {
+  display: block;
+}
+.displayIconPlus {
+  display: none;
+}
+
+.iconPlusTask {
+  left: 8px;
+  top: 8px;
+}
+.textTaskComplete {
+  color: #626f86;
+  line-height: 20px;
+}
+.labelSelected {
+  display: block !important;
+}
+.iconCloseTask {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  z-index: 800;
+  display: none;
+}
+.iconCloseTask:hover {
+  background: #fd8686;
+}
+
+.block2Footer {
+  width: 100%;
+  height: 96px;
+  display: none;
+}
+.inputAddACard {
+  height: 56px;
+  width: 100%;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 1px 1px 0px rgba(9, 30, 66, 0.25),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  border: none;
+  resize: none;
+  display: block;
+  padding-top: 8px;
+  padding-left: 12px;
+  margin-bottom: 8px;
+}
+.inputAddACard::placeholder {
+  color: #626f86;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.btnAddACard {
+  height: 32px;
+  width: 83px;
+  border-radius: 3px;
+  background: #0c66e4;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+}
+.closeAddACard {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+.closeAddACard img {
+  width: 20px;
+  height: 20px;
+}
+.blockAddCard {
+  display: flex;
+  gap: 4px;
+}
+.block1AddList {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  gap: 8px;
+  border-radius: 12px;
+}
+.block2AddList {
+  height: 88px;
+  padding: 8px;
+  border-radius: 12px;
+  background: #f1f2f4;
+  display: none;
+  box-shadow: 0px 1px 1px 0px rgba(9, 30, 66, 0.25),
+    0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+  flex-direction: column;
+  gap: 8px;
+}
+.inputAddList {
+  width: 100%;
+  padding-left: 12px;
+  height: 32px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0px 0px 0px 1px #8590a2 inset;
+  border: none;
+}
+.inputAddList::placeholder {
+  color: #626f86;
+  font-weight: 600;
+  line-height: 20px;
+}
+.closeAddList {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+.blockAddList {
+  display: flex;
+  gap: 4px;
+}
+.blockAddList img {
+  width: 20px;
+  height: 20px;
+}
+
+.modalLabel {
+  z-index: 1003;
+}
+
+.closeLabel {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.textLabel {
+  color: #44546f;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+.listLabel {
+  padding-top: 4px;
+  margin-top: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.labelInfo {
+  height: 36px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.checkboxLabel {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.labelColor {
+  width: 100%;
+  height: 32px;
+  border-radius: 3px;
+  margin-left: 12px;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  background: #4bce97;
+  padding-left: 12px;
+  color: #164b35;
+  font-weight: 500;
+  line-height: 32px;
+}
+.editLabel {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.editLabel img {
+  width: 12px;
+  height: 12px;
+}
+.btnLabel {
+  width: 100%;
+  height: 32px;
+  margin-top: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  background: rgba(9, 30, 66, 0.06);
+  color: #172b4d;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.selectedLabel {
+  display: none;
+}
+
+.inputEditList {
+  height: 32px;
+  border-radius: 4px;
+  background: #FFF;
+  box-shadow: 0px 0px 0px 1px #8590A2 inset;
+  color: #626F86;
+  font-weight: 600;
+  line-height: 20px;
+  width: 100%;
+  padding: 0 12px;
+  outline: none;
+  border: none;
+  display: none;
+}
+
+.titleInput{
+  height: 36px;
+  border-radius: 4px;
+  background: #FFF;
+  box-shadow: 0px 0px 0px 1px #8590A2 inset;
+  color: #626F86;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  width: 80%;
+  padding: 0 12px;
+  outline: none;
+  border: none;
+  display: none;
+}

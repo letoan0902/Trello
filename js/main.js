@@ -2,421 +2,264 @@
 let listBoards = document.querySelector(".listBoards");
 let listStarred = document.querySelector(".listStarred");
 let listClosed = document.querySelector(".listClosed");
-
-
-renderBoard();
-
-let checkEditBoard = false;
-
-function renderBoard() {
-  boardInfos = listBoards.querySelectorAll('.boardInfo');
-  
-
-  boardInfos.forEach(boardInfo => {
-    boardInfo.remove();
-  });
-  listStarred.innerHTML=``;
-  listClosed.innerHTML=``;
-
-
-  let boardStarred = user.boards.filter((element) => {
-    return element.is_starred === true;
-  });
-  let boardClosed = user.boards.filter((element) => {
-    return element.is_closed === true;
-  });
-  let boardNormal = user.boards.filter((element) => {
-    return element.is_closed !== true && element.is_starred !== true;
-  });
-
-  boardNormal.forEach((el, index) => {
-    let createBoard = listBoards.querySelector(".createBoard");
-    let boardInfo = document.createElement("div");
-    boardInfo.className = "boardInfo";
-    boardInfo.style.background = el.color;
-    boardInfo.innerHTML = `
-            ${
-              el.backdrop
-                ? `<img class="backgroundBoard" src="${el.backdrop}" alt="" />`
-                : ""
-            }
-            <div class="overlay"></div>
-            <span class="titleBoard">${el.title}</span>
-            <div class="editBoard">
-              <img src="../css/data/icons/iconEditBoard.png" alt="">
-              <span class="textEdit">Edit this board</span>
-            </div>`;
-
-
-            boardInfo.addEventListener("mouseover", function () {
-              let editBoard = this.querySelector(".editBoard");
-              editBoard.style.display = "flex";
-              editBoard.addEventListener("click",function(){
-                backgroundId = -1;
-                boardId = el.id;
-                checkEditBoard = true;
-                inputTitle.value = `${el.title}`;
-                removeSelectedClass();
-
-                let noticeTitle = document.querySelector(".noticeTitle");
-                noticeTitle.textContent = `👋 Please provide a valid board title.`;
-                noticeTitle.style.color = "#212529";
-
-                let textHeaderCreate = document.querySelector(".textHeaderCreate");
-                textHeaderCreate.textContent = "Update board";
-
-                let createNewBoard = document.querySelector(".createNewBoard");
-                createNewBoard.textContent = "Save";
-                
-
-                overlayModalCreate.classList.add("show");
-                modalCreateBoard.classList.add("displayModal");
-                closeModalCreate.addEventListener("click", function () {
-                  overlayModalCreate.classList.remove("show");
-                  modalCreateBoard.classList.remove("displayModal");
-                });
-                closeModalCreateFooter.addEventListener("click", function () {
-                  overlayModalCreate.classList.remove("show");
-                  modalCreateBoard.classList.remove("displayModal");
-                });
-              
-                allBackgroundItems.forEach((item,index) => {
-                  item.addEventListener('click', function(event) {
-                    removeSelectedClass();
-                    let iconSelect = this.querySelector(".selectIconCreate");
-                    iconSelect.classList.add('selectedModalCreate');
-                    backgroundId = index;
-                  });
-                });
-              })
-          });
-
-        boardInfo.addEventListener("mouseout", function () {
-          let editBoard = this.querySelector(".editBoard");
-          editBoard.style.display = "none";
-      });
-
-    let overlay = boardInfo.querySelector(".overlay");
-    overlay.addEventListener("click", function () {
-      boardId = el.id;
-      saveData();
-      window.location.href = "../docs/board.html"
-      });
-    listBoards.insertBefore(boardInfo, createBoard);
-  });
-
-  boardStarred.forEach((el, index) => {
-    let boardInfoStarred = document.createElement("div");
-    boardInfoStarred.className = "boardInfoStarred";
-    boardInfoStarred.style.background = el.color;
-    boardInfoStarred.innerHTML = `
-            ${
-              el.backdrop
-                ? `<img class="backgroundBoard" src="${el.backdrop}" alt="" />`
-                : ""
-            }
-            <div class="overlay"></div>
-            <span class="titleBoard">${el.title}</span>`;
-    let overlay = boardInfoStarred.querySelector(".overlay");
-    overlay.addEventListener("click", function () {
-      boardId = el.id;
-      saveData();
-      window.location.href = "../docs/board.html"
-      });
-    listStarred.appendChild(boardInfoStarred);
-  });
-}
-
 let btnCreateBoard = document.querySelector(".btnCreateBoard");
 let overlayModalCreate = document.querySelector(".overlayModalCreate");
 let modalCreateBoard = document.querySelector(".modalCreateBoard");
 let closeModalCreate = document.querySelector(".closeModalCreate");
 let closeModalCreateFooter = document.querySelector(".closeModalCreateFooter");
 let createNewBoard = document.querySelector(".createNewBoard");
-
-let backgroundItems = Array.from(document.querySelectorAll('.backgroundCreateInfo'));
-let colorItems = Array.from(document.querySelectorAll('.colorCreateInfo'));
-
+let inputTitle = document.querySelector(".inputTitle");
+let boardsSidebar = document.querySelector(".boardsSidebar");
+let starredBoards = document.querySelector(".starredBoards");
+let closeBoards = document.querySelector(".closeBoards");
+let headerContent = document.querySelector(".headerContent");
+let headerStarred = document.querySelector(".headerStarred");
+let headerClosed = document.querySelector(".headerClosed");
+let backgroundItems = Array.from(document.querySelectorAll(".backgroundCreateInfo"));
+let colorItems = Array.from(document.querySelectorAll(".colorCreateInfo"));
 let allBackgroundItems = backgroundItems.concat(colorItems);
 
-let inputTitle = document.querySelector(".inputTitle");
+let checkEditBoard = false;
 let backgroundId = -1;
+let currentView = 'all';
 
-btnCreateBoard.addEventListener("click", function () {
-  backgroundId = -1;
+// Logic creare board
+function createBoard(board, checkEdit) {
+  let div = document.createElement("div");
+  div.className = "boardInfo";
+  div.style.background = board.color;
+  div.innerHTML = `
+    ${board.backdrop ? `<img class="backgroundBoard" src="${board.backdrop}" alt="" />` : ""}
+    <div class="overlay"></div>
+    <span class="titleBoard">${board.title}</span>
+      <div class="editBoard">
+        <img src="../css/data/icons/iconEditBoard.png" alt="">
+        <span class="textEdit">Edit this board</span>
+      </div>`;
 
-  inputTitle.value = "";
-  removeSelectedClass();
+  if (checkEdit){
+    div.addEventListener("mouseover", function() {
+      div.querySelector(".editBoard").style.display = "flex";
+    });
+    div.addEventListener("mouseout", function(){
+      div.querySelector(".editBoard").style.display = "none";
+    });
+    div.querySelector(".editBoard").addEventListener("click", function(){
+      boardId = board.id     
+      openModal(true)
+    });
+    div.querySelector(".overlay").addEventListener("click", function(){
+      boardId = board.id;
+      saveData();
+      window.location.href = "../pages/board.html";
+    });
+  }
 
-  let textHeaderCreate = document.querySelector(".textHeaderCreate");
-                textHeaderCreate.textContent = "Create board";
+  return div;
+}
 
-                let createNewBoard = document.querySelector(".createNewBoard");
-                createNewBoard.textContent = "Create";
+// Logic render boards vào containerList
+function renderBoards(boards, containerList, checkEdit, buttonCreate = null) {
+  if (buttonCreate) {
+    Array.from(containerList.querySelectorAll(".boardInfo")).forEach(el => el.remove());
+  } else {
+    containerList.innerHTML = "";
+  }
+  boards.forEach(board => {
+    let boardElement = createBoard(board, checkEdit);
+    buttonCreate ? containerList.insertBefore(boardElement, buttonCreate) : containerList.appendChild(boardElement);
+  });
+}
+
+// Logic change view
+function setView(view) {
+  currentView = view;
+  let createBoard = listBoards.querySelector(".createBoard");
+  let normalBoardsList = user.boards.filter(board => !board.is_closed && !board.is_starred);
+  let starredBoardsList = user.boards.filter(board => board.is_starred);
+  let closedBoardsList = user.boards.filter(board => board.is_closed);
+
+  if (view == "all") {
+    listBoards.style.display = "flex";
+    listStarred.style.display = "flex";
+    listClosed.style.display = "none";
+    headerContent.style.display = "flex";
+    headerStarred.style.display = "flex";
+    headerClosed.style.display = "none";
+    renderBoards(normalBoardsList, listBoards, true, createBoard);
+    renderBoards(starredBoardsList, listStarred, true);
+  } else if (view == "starred") {
+    listBoards.style.display = "none";
+    listStarred.style.display = "flex";
+    listClosed.style.display = "none";
+    headerContent.style.display = "none";
+    headerStarred.style.display = "flex";
+    headerClosed.style.display = "none";
+    renderBoards(starredBoardsList, listStarred, true);
+  } else if (view == "closed") {
+    listBoards.style.display = "none";
+    listStarred.style.display = "none";
+    listClosed.style.display = "flex";
+    headerContent.style.display = "none";
+    headerStarred.style.display = "none";
+    headerClosed.style.display = "flex";
+    renderBoards(closedBoardsList, listClosed, false);
+  }
+
+  // Logic sidebar
+  boardsSidebar.classList.toggle("selectActive", view === "all");
+  boardsSidebar.classList.toggle("transparent", view !== "all");
+  starredBoards.classList.toggle("selectActive", view === "starred");
+  starredBoards.classList.toggle("transparent", view !== "starred");
+  closeBoards.classList.toggle("selectActive", view === "closed");
+  closeBoards.classList.toggle("transparent", view !== "closed");
+}
+
+// Logic open modal create/edit board
+function openModal(isEdit) {
+  checkEditBoard = isEdit;
   let noticeTitle = document.querySelector(".noticeTitle");
-  noticeTitle.textContent = `👋 Please provide a valid board title.`;
-  noticeTitle.style.color = "#212529";
+  let textHeaderCreate = document.querySelector(".textHeaderCreate");
+  let createNewBoardBtn = document.querySelector(".createNewBoard");
 
+  noticeTitle.textContent = "👋 Please provide a valid board title.";
+  noticeTitle.style.color = "#212529";
   overlayModalCreate.classList.add("show");
   modalCreateBoard.classList.add("displayModal");
-  closeModalCreate.addEventListener("click", function () {
-    overlayModalCreate.classList.remove("show");
-    modalCreateBoard.classList.remove("displayModal");
-  });
-  closeModalCreateFooter.addEventListener("click", function () {
-    overlayModalCreate.classList.remove("show");
-    modalCreateBoard.classList.remove("displayModal");
-  });
 
-  allBackgroundItems.forEach((item,index) => {
-    item.addEventListener('click', function(event) {
+  if (isEdit) {
+    let board = user.boards.find(board => board.id === boardId);
+    inputTitle.value = board.title;
+    removeSelectedClass();
+    let currentBackground = board.backdrop || board.color;
+    backgroundId = dataBackgrounds.indexOf(currentBackground);
+    if (backgroundId !== -1) {
+      allBackgroundItems[backgroundId].querySelector(".selectIconCreate").classList.add("selectedModalCreate");
+    }
+    textHeaderCreate.textContent = "Update board";
+    createNewBoardBtn.textContent = "Save";
+  } else {
+    inputTitle.value = "";
+    backgroundId = -1;
+    removeSelectedClass();
+    textHeaderCreate.textContent = "Create board";
+    createNewBoardBtn.textContent = "Create";
+  }
+
+  closeModalCreate.addEventListener("click", closeModal);
+  closeModalCreateFooter.addEventListener("click", closeModal);
+  allBackgroundItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
       removeSelectedClass();
-      let iconSelect = this.querySelector(".selectIconCreate");
-      iconSelect.classList.add('selectedModalCreate');
+      item.querySelector(".selectIconCreate").classList.add("selectedModalCreate");
       backgroundId = index;
     });
   });
-});
+}
 
 
-createNewBoard.addEventListener("click", function () {
+function closeModal() {
+  overlayModalCreate.classList.remove("show");
+  modalCreateBoard.classList.remove("displayModal");
+}
+
+// Logic btn create board
+createNewBoard.addEventListener("click", function() {
   let noticeTitle = document.querySelector(".noticeTitle");
-  noticeTitle.textContent = `👋 Please provide a valid board title.`;
-  if(inputTitle.value == ""){
-    noticeTitle.textContent = `⛔ Title cannot be blank!`;
+  if (inputTitle.value === "") {
+    noticeTitle.textContent = "⛔ Title cannot be blank!";
     noticeTitle.style.color = "red";
-  } else if(checkEditBoard){
-    if(backgroundId == -1){
-      backgroundId = 0;
-    }
-    let backdropInfo;
-    let colorInfo;
-    if(backgroundId >= 0 && backgroundId<4){
-      backdropInfo = dataBackgrounds[backgroundId];
-      colorInfo = false;
-    } else if(backgroundId<10){
-      backdropInfo = false;
-      colorInfo = dataBackgrounds[backgroundId];
-    }
-    
-    let editBoard = user.boards.find(board => board.id == boardId);
+    return;
+  }
+
+  let backdropInfo = backgroundId >= 0 && backgroundId < 4 ? dataBackgrounds[backgroundId] : (backgroundId === -1 ? dataBackgrounds[0] : null);
+  let colorInfo = backgroundId >= 4 && backgroundId < 10 ? dataBackgrounds[backgroundId] : null;
+
+  if (checkEditBoard) {
+    let editBoard = user.boards.find(board => board.id === boardId);
     editBoard.title = inputTitle.value;
     editBoard.backdrop = backdropInfo;
     editBoard.color = colorInfo;
-    overlayModalCreate.classList.remove("show");
-    modalCreateBoard.classList.remove("displayModal");
-    saveData();
-    renderBoard();
   } else {
-    if(backgroundId == -1){
-      backgroundId = 0;
-    }
-    let backdropInfo;
-    let colorInfo;
-    if(backgroundId >= 0 && backgroundId<4){
-      backdropInfo = dataBackgrounds[backgroundId];
-      colorInfo = false;
-    } else if(backgroundId<10){
-      backdropInfo = false;
-      colorInfo = dataBackgrounds[backgroundId];
-    }
-    
     let newBoard = {
       id: user.boards.length > 0 ? user.boards[user.boards.length - 1].id + 1 : 101,
       title: inputTitle.value,
       description: false,
-      backdrop: backdropInfo,
+      backdrop: backdropInfo || dataBackgrounds[0],
       color: colorInfo,
       is_starred: false,
       is_closed: false,
       created_at: new Date().toISOString(),
       lists: [],
-    }
+    };
     user.boards.push(newBoard);
-    overlayModalCreate.classList.remove("show");
-    modalCreateBoard.classList.remove("displayModal");
-    saveData();
-    renderBoard();
   }
+
+  closeModal();
+  saveData();
+  setView(currentView);
 });
 
-
-
+// Logic remove selected background
 function removeSelectedClass() {
   allBackgroundItems.forEach(item => {
-    let iconSelect = item.querySelector(".selectIconCreate");
-    iconSelect.classList.remove('selectedModalCreate');
+    item.querySelector(".selectIconCreate").classList.remove("selectedModalCreate");
   });
 }
 
+// Logic click sidebar
+btnCreateBoard.addEventListener("click", function() {
+  openModal(false)
+});
+boardsSidebar.addEventListener("click", function() {
+  setView("all"); 
+  closeSidebar();
+});
+starredBoards.addEventListener("click", function() {
+  setView("starred"); 
+  closeSidebar();
+});
+closeBoards.addEventListener("click", function() {
+  setView("closed"); closeSidebar();
+});
 
+// Check open
+if (openStarredBoards) {
+  openStarredBoards = false;
+  saveData();
+  setView("starred");
+} else if (openClosedBoards) {
+  openClosedBoards = false;
+  saveData();
+  setView("closed");
+} else {
+  setView("all");
+}
 
-// Media
-
+// Logic sidebar media
 let listDashboardMedia = document.querySelector(".listDashboardMedia");
 let overlaySidebar = document.querySelector(".overlaySidebar");
 let sidebar = document.querySelector(".sidebar");
 
-listDashboardMedia.addEventListener("click",function(){
+listDashboardMedia.addEventListener("click", function(){
   overlaySidebar.classList.add("showOverlaySidebar");
   sidebar.classList.add("displaySidebar");
   sidebar.classList.remove("hiddenSidebar");
 });
 
-overlaySidebar.addEventListener("click",function(){
-  closeSidebar();
-});
+overlaySidebar.addEventListener("click", closeSidebar);
 
-function closeSidebar(){
+function closeSidebar() {
   sidebar.classList.add("hiddenSidebar");
   overlaySidebar.classList.remove("showOverlaySidebar");
-  setTimeout(()=>{
-  sidebar.classList.remove("hiddenSidebar");
-  sidebar.classList.remove("displaySidebar");
-  },500);
+  setTimeout(() => {
+    sidebar.classList.remove("hiddenSidebar");
+    sidebar.classList.remove("displaySidebar");
+  }, 500);
 }
 
-
-
-
-let headerContent = document.querySelector(".headerContent");
-let headerStarred = document.querySelector(".headerStarred");
-let headerClosed = document.querySelector(".headerClosed");
-
-
-
-
-function renderStarredBoard(){
-  listBoards.style.display = "none";
-  listClosed.style.display = "none";
-  headerContent.style.display = "none";
-  headerClosed.style.display = "none";
-  headerStarred.style.display = "flex";
-  listStarred.style.display = "flex";
-
-  boardsSidebar.classList.remove("selectActive");
-  boardsSidebar.classList.add("transparent");
-  starredBoards.classList.add("selectActive");
-  starredBoards.classList.remove("transparent");
-  closeBoards.classList.remove("selectActive");
-  closeBoards.classList.add("transparent");
-
-  listStarred.innerHTML=``;
-  let boardStarred = user.boards.filter((element) => {
-    return element.is_starred === true;
-  });
-  boardStarred.forEach((el, index) => {
-    let boardInfoStarred = document.createElement("div");
-    boardInfoStarred.className = "boardInfoStarred";
-    boardInfoStarred.style.background = el.color;
-    boardInfoStarred.innerHTML = `
-            ${
-              el.backdrop
-                ? `<img class="backgroundBoard" src="${el.backdrop}" alt="" />`
-                : ""
-            }
-            <div class="overlay"></div>
-            <span class="titleBoard">${el.title}</span>`;
-    let overlay = boardInfoStarred.querySelector(".overlay");
-    overlay.addEventListener("click", function () {
-      boardId = el.id;
-      saveData();
-      window.location.href = "../docs/board.html"
-      });
-    listStarred.appendChild(boardInfoStarred);
-  });
-}
-
-function renderClosedBoard(){
-  listBoards.style.display = "none";
-  listStarred.style.display = "none";
-  headerContent.style.display = "none";
-  headerStarred.style.display = "none";
-  headerClosed.style.display = "flex";
-  listClosed.style.display = "flex";
-
-  boardsSidebar.classList.remove("selectActive");
-  boardsSidebar.classList.add("transparent");
-  closeBoards.classList.add("selectActive");
-  closeBoards.classList.remove("transparent");
-  starredBoards.classList.remove("selectActive");
-  starredBoards.classList.add("transparent");
-
-
-
-  listClosed.innerHTML=``;
-  let boardClosed = user.boards.filter((element) => {
-    return element.is_closed === true;
-  });
-  boardClosed.forEach((el, index) => {
-    let boardInfoClosed = document.createElement("div");
-    boardInfoClosed.className = "boardInfoClosed";
-    boardInfoClosed.style.background = el.color;
-    boardInfoClosed.innerHTML = `
-            ${
-              el.backdrop
-                ? `<img class="backgroundBoard" src="${el.backdrop}" alt="" />`
-                : ""
-            }
-            <div class="overlay"></div>
-            <span class="titleBoard">${el.title}</span>`;
-    listClosed.appendChild(boardInfoClosed);
-  });
-}
-
-
-
-
-let boardsSidebar = document.querySelector(".boardsSidebar");
-let starredBoards = document.querySelector(".starredBoards");
-let closeBoards = document.querySelector(".closeBoards");
-
-starredBoards.addEventListener("click",function(){
-  renderStarredBoard();
-  closeSidebar();
+//Log out
+document.querySelector(".SignOut").addEventListener("click", () => {
+  localStorage.removeItem("user");
+  window.location.href = "../pages/login.html";
 });
-
-closeBoards.addEventListener("click",function(){
-  renderClosedBoard();
-  closeSidebar();
-});
-
-boardsSidebar.addEventListener("click",function(){
-  selelectBoard();
-  renderBoard();
-  closeSidebar();
-})
-
-
-function selelectBoard(){
-  listBoards.style.display = "flex";
-  listStarred.style.display = "flex";
-  headerContent.style.display = "flex";
-  headerStarred.style.display = "flex";
-  listClosed.style.display = "flex";
-
-  closeBoards.classList.remove("selectActive");
-  closeBoards.classList.add("transparent");
-  boardsSidebar.classList.add("selectActive");
-  boardsSidebar.classList.remove("transparent");
-  starredBoards.classList.remove("selectActive");
-  starredBoards.classList.add("transparent");
-}
-
-if(openStarredBoards){
-  openStarredBoards = false;
-  saveData();
-  renderStarredBoard();
-  closeSidebar();
-} else if(openClosedBoards){
-  openClosedBoards = false;
-  saveData();
-  renderClosedBoard();
-  closeSidebar();
-} else if(openBoards){
-  openBoards = false;
-  saveData();
-  selelectBoard();
-  renderBoard();
-  closeSidebar();
-}

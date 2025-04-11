@@ -9,47 +9,56 @@ let textBodyError = document.querySelector(".textBodyError");
 
 let successSignIn = document.querySelector(".successSignIn");
 
-btnSignIn.addEventListener("click",function(){
-    let flag = 0;
-    textBodyError.innerHTML=``;
-    let checkEmail = checkData(inputEmail.value.trim(),"email");
-    let checkPassword = checkData(inputPassword.value,"password");
-    let checkUser = checkData(inputEmail.value.trim(), "user",inputPassword.value);
-    if(checkEmail != "valid"){
-        let span = document.createElement("span");
-        span.className="textDetailed";
-        span.textContent=`${checkEmail}`;
-        textBodyError.appendChild(span);
-        flag =1;
-    } 
-    if(checkPassword!="valid"){
-        let span = document.createElement("span");
-        span.className="textDetailed";
-        span.textContent=`${checkPassword}`;
-        textBodyError.appendChild(span);
-        flag =1;
-    }
+if(user){
+  window.location = "../pages/index.html";
+}
 
-    if(checkUser!="valid" && flag == 0){
-        let span = document.createElement("span");
-        span.className="textDetailed";
-        span.textContent=`${checkUser}`;
-        textBodyError.appendChild(span);
-        flag = 1;
-    }
-    if(flag==1){
-        errorMessage.classList.add("displayMessage");
-        setTimeout(() => {
-        errorMessage.classList.remove("displayMessage");
-        }, 2000);
-    } else {
-        successSignIn.classList.add("displayMessage");
-        setTimeout(() => {
-        successSignIn.classList.remove("displayMessage");
-        let user = users.find(element => element.email == inputEmail.value.trim())
-        localStorage.setItem("user",JSON.stringify(user));
-        window.location = "../docs/index.html";
-        }, 1000);
-        
-    }
+btnSignIn.addEventListener("click", function () {
+  let flag = 0;
+  textBodyError.innerHTML = ``;
+  let checkEmail = checkData(inputEmail.value.trim(), "email");
+  let checkPassword = checkData(inputPassword.value, "password");
+  let checkUser = checkData(
+    inputEmail.value.trim(),
+    "user",
+    inputPassword.value
+  );
+  if (checkEmail != "valid") {
+    let span = document.createElement("span");
+    span.className = "textDetailed";
+    span.textContent = `${checkEmail}`;
+    textBodyError.appendChild(span);
+    flag = 1;
+  }
+  if (checkPassword != "valid") {
+    let span = document.createElement("span");
+    span.className = "textDetailed";
+    span.textContent = `${checkPassword}`;
+    textBodyError.appendChild(span);
+    flag = 1;
+  }
+
+  if (checkUser != "valid" && flag == 0) {
+    let span = document.createElement("span");
+    span.className = "textDetailed";
+    span.textContent = `${checkUser}`;
+    textBodyError.appendChild(span);
+    flag = 1;
+  }
+  if (flag == 1) {
+    errorMessage.classList.add("displayMessage");
+    setTimeout(() => {
+      errorMessage.classList.remove("displayMessage");
+    }, 2000);
+  } else {
+    successSignIn.classList.add("displayMessage");
+    setTimeout(() => {
+      successSignIn.classList.remove("displayMessage");
+      user = users.find(
+        (element) => element.email == inputEmail.value.trim()
+      );
+      saveData();
+      window.location = "../pages/index.html";
+    }, 1000);
+  }
 });

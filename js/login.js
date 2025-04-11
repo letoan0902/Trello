@@ -9,7 +9,7 @@ let textBodyError = document.querySelector(".textBodyError");
 
 let successSignIn = document.querySelector(".successSignIn");
 
-if(user){
+if (user) {
   window.location = "../pages/index.html";
 }
 
@@ -54,9 +54,7 @@ btnSignIn.addEventListener("click", function () {
     successSignIn.classList.add("displayMessage");
     setTimeout(() => {
       successSignIn.classList.remove("displayMessage");
-      user = users.find(
-        (element) => element.email == inputEmail.value.trim()
-      );
+      user = users.find((element) => element.email == inputEmail.value.trim());
       saveData();
       window.location = "../pages/index.html";
     }, 1000);

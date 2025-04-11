@@ -1,91 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    line-height: 24px;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 .errorMessage {
-    display: flex;
-    padding: 16px;
-    flex-direction: column;
-    width: 80%;
-    max-width: 299px;
-    gap: 8px;
-    border-radius: 10px;
-    background: #ffe5e8;
-    position: fixed;
-    top: 22px;
-    left: 26px;
-    display: none;
-  }
-  .headerErrorSignin {
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .textHeaderError {
-    height: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .textDetailed{
-    padding-left: 24px;
-  }
-  .textError {
-    color: #11151f;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: "Inter", sans-serif;
-  }
-  .btnCloseError {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    border-radius: 100%;
-  }
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  width: 80%;
+  max-width: 299px;
+  gap: 8px;
+  border-radius: 10px;
+  background: #ffe5e8;
+  position: fixed;
+  top: 22px;
+  left: 26px;
+  display: none;
+}
+.headerErrorSignin {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.textHeaderError {
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.textDetailed {
+  padding-left: 24px;
+}
+.textError {
+  color: #11151f;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.btnCloseError {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 100%;
+}
 
-  .btnCloseError:hover {
-    background-color: #bcbcbc;
-  }
-  .textBodyError {
-    color: #000;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    line-height: 21px;
-    display: flex;
-    flex-direction: column;
-  }
-  .successSignIn {
-    width: 80%;
-    max-width: 299px;
-    height: 58px;
-    padding: 16px 16px 18px 16px;
-    border-radius: 10px;
-    background: #e5fff0;
-    position: fixed;
-    top: 22px;
-    left: 26px;
-    display: none;
-  }
-  .bodySuccess {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+.btnCloseError:hover {
+  background-color: #bcbcbc;
+}
+.textBodyError {
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  flex-direction: column;
+}
+.successSignIn {
+  width: 80%;
+  max-width: 299px;
+  height: 58px;
+  padding: 16px 16px 18px 16px;
+  border-radius: 10px;
+  background: #e5fff0;
+  position: fixed;
+  top: 22px;
+  left: 26px;
+  display: none;
+}
+.bodySuccess {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .textSuccess {
-    color: #000;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    line-height: 14px;
-  }
+.textSuccess {
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+}

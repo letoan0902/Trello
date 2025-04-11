@@ -6,8 +6,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/board.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css"
+    />
   </head>
   <body>
     <header class="headerMain">
@@ -76,7 +82,6 @@
         </div>
         <div class="lineSidebar"></div>
 
-
         <div class="listNavbar listBoardsNavbar">
           <div class="headerYourBoards">
             <span class="textHeaderYourBoard">Your boards</span>
@@ -92,10 +97,10 @@
             <div class="yourBoardInfo">
               <div class="backgroundBoardInfo">
                 <img
-                class="backgroundYourBoard"
-                src="../css/data/images/board1.jpg"
-                alt=""
-              />
+                  class="backgroundYourBoard"
+                  src="../css/data/images/board1.jpg"
+                  alt=""
+                />
               </div>
               <span class="textYourBoard">123123213</span>
             </div>
@@ -130,7 +135,7 @@
               <span class="textTable">Table</span>
             </div>
             <div class="btncloseBoard">
-              <img src="../css/data/icons/close-board.png" alt="">
+              <img src="../css/data/icons/close-board.png" alt="" />
               <span class="textCloseBoard">Close this board</span>
             </div>
           </div>
@@ -147,7 +152,7 @@
           <div class="listMainCard">
             <div class="headerMainCard">
               <p class="textMainCard">demo</p>
-              <input type="text" class="inputEditList" value="demo">
+              <input type="text" class="inputEditList" value="demo" />
               <div class="iconsHeaderMainCard">
                 <img
                   class="collapseMainCard"
@@ -159,10 +164,9 @@
                 </div>
               </div>
             </div>
-            <div class="listTasks">
-            </div>
+            <div class="listTasks"></div>
             <div class="footerTask">
-                <div class="block1Footer">
+              <div class="block1Footer">
                 <img
                   class="iconPlusTask"
                   src="../css/data/icons/plus-board.png"
@@ -178,17 +182,23 @@
                 </div>
               </div>
               <div class="block2Footer">
-                <textarea class="inputAddACard" placeholder="Enter a title or paste a link"></textarea>
+                <textarea
+                  class="inputAddACard"
+                  placeholder="Enter a title or paste a link"
+                ></textarea>
                 <div class="blockAddCard">
                   <button class="btnAddACard">Add card</button>
                   <span class="closeAddACard">
-                    <img src="../css/data/icons/close-add-a-card-board.png" alt="">
+                    <img
+                      src="../css/data/icons/close-add-a-card-board.png"
+                      alt=""
+                    />
                   </span>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="addListCard">
             <div class="block1AddList">
               <img
@@ -199,11 +209,18 @@
               <span class="textFooterTask">Add another list</span>
             </div>
             <div class="block2AddList">
-              <input class="inputAddList" type="text" placeholder="Enter list name…">
+              <input
+                class="inputAddList"
+                type="text"
+                placeholder="Enter list name…"
+              />
               <div class="blockAddList">
                 <button class="btnAddList">Add list</button>
                 <span class="closeAddList">
-                  <img src="../css/data/icons/close-add-a-card-board.png" alt="">
+                  <img
+                    src="../css/data/icons/close-add-a-card-board.png"
+                    alt=""
+                  />
                 </span>
               </div>
             </div>
@@ -343,9 +360,8 @@
       </div>
     </div>
 
-
     <div class="modalCloseBoard">
-      <img src="../css/data/icons/exclamation-mark-board.png" alt="">
+      <img src="../css/data/icons/exclamation-mark-board.png" alt="" />
       <h1 class="headerModalCloseBoard">Are you sure?</h1>
       <p class="textModalCloseBoard">You won't be able to revert this!</p>
       <div class="actionModalCloseBoard">
@@ -354,229 +370,282 @@
       </div>
     </div>
 
-
-<div class="modalDetail">
-  <div class="headerModalDetail">
-    <div class="block1ModalDetail">
-      <div class="checkbox-wrapper-18">
-        <div class="round">
-          <input type="checkbox" id="checkbox-18"/>
-          <label for="checkbox-18"></label>
+    <div class="modalDetail">
+      <div class="headerModalDetail">
+        <div class="block1ModalDetail">
+          <div class="checkbox-wrapper-18">
+            <div class="round">
+              <input type="checkbox" id="checkbox-18" />
+              <label for="checkbox-18"></label>
+            </div>
+          </div>
+          <input type="text" class="titleInput" />
+          <span class="titleBoardDetail">Kịch bản</span>
+        </div>
+        <div class="block2ModalDetail">
+          <span class="textBlock2Detail">in list</span>
+          <div class="selectModalDetail">
+            <span class="textSelectDetail">In_progress</span>
+            <img src="../css/data/icons/more-detail.png" alt="" />
+          </div>
         </div>
       </div>
-      <input type="text" class="titleInput">
-      <span class="titleBoardDetail">Kịch bản</span>
-    </div>
-    <div class="block2ModalDetail">
-      <span class="textBlock2Detail">in list</span>
-      <div class="selectModalDetail">
-        <span class="textSelectDetail">In_progress</span>
-        <img src="../css/data/icons/more-detail.png" alt="">
+      <div class="mainModalDetail">
+        <div class="block1MainDetail">
+          <div class="descriptionHeader">
+            <img
+              class="iconDescription"
+              src="../css/data/icons/description-detail.png"
+              alt=""
+            />
+            <span class="textDescription">Description</span>
+          </div>
+          <div class="textareaDetail">
+            <textarea id="editor"></textarea>
+          </div>
+          <div class="actionModalDetail">
+            <button class="saveDetail">Save</button>
+            <button class="cancelDetail">Cancel</button>
+          </div>
+        </div>
+        <div class="block2MainDetail">
+          <div class="labelEdit">
+            <img src="../css/data/icons/label-edit-detail.png" alt="" />
+            <span class="textInfoDetail">Labels</span>
+          </div>
+          <div class="dateEdit">
+            <img src="../css/data/icons/clock-edit-detail.png" alt="" />
+            <span class="textInfoDetail">Dates</span>
+          </div>
+          <div class="deleteTask">
+            <img src="../css/data/icons/delete-task-board.png" alt="" />
+            <span class="textDeleteTask">Delete</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="mainModalDetail">
-    <div class="block1MainDetail">
-      <div class="descriptionHeader">
-        <img class="iconDescription" src="../css/data/icons/description-detail.png" alt="">
-        <span class="textDescription">Description</span>
-      </div>
-      <div class="textareaDetail">
-        <textarea id="editor"></textarea>
-      </div>
-      <div class="actionModalDetail">
-        <button class="saveDetail">Save</button>
-        <button class="cancelDetail">Cancel</button>
-      </div>
-    </div>
-    <div class="block2MainDetail">
-      <div class="labelEdit">
-        <img src="../css/data/icons/label-edit-detail.png" alt="">
-        <span class="textInfoDetail">Labels</span>
-      </div>
-      <div class="dateEdit">
-        <img src="../css/data/icons/clock-edit-detail.png" alt="">
-        <span class="textInfoDetail">Dates</span>
-      </div>
-      <div class="deleteTask">
-        <img src="../css/data/icons/delete-task-board.png" alt="">
-        <span class="textDeleteTask">Delete</span>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="modalMove">
-  <div class="headerModalMove">
-    <span class="textHeaderMoveCard">Move card</span>
-    <div class="btnCloseMoveCard">
-      <img class="iconCloseMoveCard" src="../css/data/icons/close-modal-move.png" alt="">
-    </div>
-  </div>
-  <div class="mainModalMove">
-    <h3 class="textMainMove">Select destination</h3>
-    <h2 class="textBlockMoveCard">Board</h2>
-    <input class="inputBoardMove" type="text" disabled>
-    <div class="moveListMain">
-      <div class="block1MoveList">
-        <h2 class="textBlockMoveCard">List</h2>
-        <div class="moveBlockCard">
-          <!-- <span class="textBlockCurrent">In-progress</span>
+    <div class="modalMove">
+      <div class="headerModalMove">
+        <span class="textHeaderMoveCard">Move card</span>
+        <div class="btnCloseMoveCard">
+          <img
+            class="iconCloseMoveCard"
+            src="../css/data/icons/close-modal-move.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="mainModalMove">
+        <h3 class="textMainMove">Select destination</h3>
+        <h2 class="textBlockMoveCard">Board</h2>
+        <input class="inputBoardMove" type="text" disabled />
+        <div class="moveListMain">
+          <div class="block1MoveList">
+            <h2 class="textBlockMoveCard">List</h2>
+            <div class="moveBlockCard">
+              <!-- <span class="textBlockCurrent">In-progress</span>
           <img class="iconOpenBlockMove" src="../css/data/icons/open-filter.png" alt=""> -->
-          <select class="listMoveCard">
-            <!-- <option class="optionListMove" value="In-progress">In-progress</option> -->
-          </select>
+              <select class="listMoveCard">
+                <!-- <option class="optionListMove" value="In-progress">In-progress</option> -->
+              </select>
+            </div>
+          </div>
+          <div class="block2MoveList">
+            <h2 class="textBlockMoveCard">Position</h2>
+            <div class="positionMoveCard">
+              <span class="textPosition">1</span>
+              <img
+                class="iconOpenBlockMove"
+                src="../css/data/icons/open-filter.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <button class="btnMoveCard">Move</button>
+      </div>
+    </div>
+
+    <div class="modalLabel">
+      <div class="headerCreateLabel">
+        <span class="textHeaderCreateLabel">Labels</span>
+        <div class="closeLabel">
+          <img src="../css/data/icons/close-modal-move.png" alt="" />
         </div>
       </div>
-      <div class="block2MoveList">
-        <h2 class="textBlockMoveCard">Position</h2>
-        <div class="positionMoveCard">
-          <span class="textPosition">1</span>
-          <img class="iconOpenBlockMove" src="../css/data/icons/open-filter.png" alt="">
+      <div class="mainLabel">
+        <h4 class="textLabel">Labels</h4>
+        <div class="listLabel">
+          <div class="labelInfo">
+            <input class="checkboxLabel" type="checkbox" name="label" />
+            <span class="labelColor">done</span>
+            <span class="editLabel">
+              <img src="../css/data/icons/edit-label-board.png" alt="" />
+            </span>
+          </div>
+        </div>
+        <button class="btnLabel">Create a new label</button>
+      </div>
+    </div>
+
+    <div class="modalCreateLabel">
+      <div class="headerCreateLabel">
+        <div class="returnCreateLabel">
+          <img src="../css/data/icons/return-create-label.png" alt="" />
+        </div>
+        <span class="textHeaderCreateLabel">Create label</span>
+        <div class="closeCreateLabel">
+          <img src="../css/data/icons/close-modal-move.png" alt="" />
+        </div>
+      </div>
+      <div class="mainCreateLabel">
+        <h3 class="textMainCreateLabel">Title</h3>
+        <input class="inputTitleLabel" type="text" />
+        <h3 class="textMainCreateLabel">Select a color</h3>
+        <div class="listColorCreateLabel">
+          <div class="colorLabel colorLabel1">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel2">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel3">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel4">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel5">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel6">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel7">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel8">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel9">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+          <div class="colorLabel colorLabel10">
+            <img
+              class="selectedLabel"
+              src="../css/data/icons/selected-label-board.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="lineCreateLabel"></div>
+        <div class="footerCreateLabel">
+          <button class="btnCreateLabel">Create</button>
+          <button class="btnDeleteLabel">Delete</button>
         </div>
       </div>
     </div>
-    <button class="btnMoveCard">Move</button>
-  </div>
-</div>
 
-
-<div class="modalLabel">
-  <div class="headerCreateLabel">
-    <span class="textHeaderCreateLabel">Labels</span>
-    <div class="closeLabel">
-      <img src="../css/data/icons/close-modal-move.png" alt="">
-    </div>
-  </div>
-  <div class="mainLabel">
-    <h4 class="textLabel">Labels</h4>
-    <div class="listLabel">
-        <div class="labelInfo">
-          <input class="checkboxLabel" type="checkbox" name="label" />
-          <span class="labelColor">done</span>
-          <span class="editLabel">
-            <img src="../css/data/icons/edit-label-board.png" alt="">
-          </span>
+    <div class="modalDate">
+      <div class="headerModalDate">
+        <span class="textHeaderModalDate">Dates</span>
+        <div class="btnCloseModalDate">
+          <img src="../css/data/icons/close-modal-move.png" alt="" />
         </div>
-    </div>
-    <button class="btnLabel">Create a new label</button>
-  </div>
-</div>
-
-
-
-<div class="modalCreateLabel">
-  <div class="headerCreateLabel">
-    <div class="returnCreateLabel">
-      <img src="../css/data/icons/return-create-label.png" alt="">
-    </div>
-    <span class="textHeaderCreateLabel">Create label</span>
-    <div class="closeCreateLabel">
-      <img src="../css/data/icons/close-modal-move.png" alt="">
-    </div>
-  </div>
-  <div class="mainCreateLabel">
-    <h3 class="textMainCreateLabel">Title</h3>
-    <input class="inputTitleLabel" type="text">
-    <h3  class="textMainCreateLabel">Select a color</h3>
-    <div class="listColorCreateLabel">
-        <div class="colorLabel colorLabel1">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel2">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel3">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel4">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel5">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel6">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel7">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel8">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel9">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-        <div class="colorLabel colorLabel10">
-          <img class="selectedLabel" src="../css/data/icons/selected-label-board.png" alt="">
-        </div>
-    </div>
-    <div class="lineCreateLabel"></div>
-    <div class="footerCreateLabel">
-      <button class="btnCreateLabel">Create</button>
-      <button class="btnDeleteLabel">Delete</button>
-    </div>
-  </div>
-</div>
-
-<div class="modalDate">
-  <div class="headerModalDate">
-    <span class="textHeaderModalDate">Dates</span>
-    <div class="btnCloseModalDate">
-      <img src="../css/data/icons/close-modal-move.png" alt="">
-    </div>
-  </div>
-  <div class="mainModalDate">
-      <div class="contentModalDate">
-        <div class="calendarContainer" id="calendar"></div>
-    <label class="labelDate labelStartDate">Start Date</label>
-    <div class="dateInput">
-    <input type="checkbox" id="startDateCheck" checked disabled>
-    <input class="startDueDate" type="text" id="startDate" readonly>
-    </div>
-    <label class="labelDate">Due Date</label>
-<div class="dateInput">
-    <input type="checkbox" id="dueDateCheck">
-    <input class="dueDate" type="text" id="dueDate" readonly placeholder="D/M/YYYY H:mm">
-</div>
       </div>
-      <button class="btnSaveModalDate">Save</button>
-      <button class="btnRemoveModalDate">Remove</button>
+      <div class="mainModalDate">
+        <div class="contentModalDate">
+          <div class="calendarContainer" id="calendar"></div>
+          <label class="labelDate labelStartDate">Start Date</label>
+          <div class="dateInput">
+            <input type="checkbox" id="startDateCheck" checked disabled />
+            <input class="startDueDate" type="text" id="startDate" readonly />
+          </div>
+          <label class="labelDate">Due Date</label>
+          <div class="dateInput">
+            <input type="checkbox" id="dueDateCheck" />
+            <input
+              class="dueDate"
+              type="text"
+              id="dueDate"
+              readonly
+              placeholder="D/M/YYYY H:mm"
+            />
+          </div>
+        </div>
+        <button class="btnSaveModalDate">Save</button>
+        <button class="btnRemoveModalDate">Remove</button>
+      </div>
     </div>
-  </div>
 
-
-<div class="errorMessage">
-  <header class="headerErrorSignin">
-    <span class="textHeaderError">
-      <img
-        class="imgHeader"
-        src="../css/data/icons/remove_circle.png"
-        alt=""
-      />
-      <span class="textError">Error</span>
-    </span>
-    <img
-      class="btnCloseError"
-      src="../css/data/icons/_BaseCloseButton.png"
-      alt=""
-    />
-  </header>
-  <div class="textBodyError">
-    <span class="textDetailed">Mật khẩu không được bỏ trống</span>
-    <span class="textDetailed">Email không được bỏ trống</span>
-  </div>
-</div>
-<div class="successSignIn">
-  <div class="bodySuccess">
-    <img
-      class="iconSuccess"
-      src="../css/data/icons/check_circle.png"
-      alt=""
-    />
-    <span class="textSuccess">Thành công</span>
-  </div>
-</div>
+    <div class="errorMessage">
+      <header class="headerErrorSignin">
+        <span class="textHeaderError">
+          <img
+            class="imgHeader"
+            src="../css/data/icons/remove_circle.png"
+            alt=""
+          />
+          <span class="textError">Error</span>
+        </span>
+        <img
+          class="btnCloseError"
+          src="../css/data/icons/_BaseCloseButton.png"
+          alt=""
+        />
+      </header>
+      <div class="textBodyError">
+        <span class="textDetailed">Mật khẩu không được bỏ trống</span>
+        <span class="textDetailed">Email không được bỏ trống</span>
+      </div>
+    </div>
+    <div class="successSignIn">
+      <div class="bodySuccess">
+        <img
+          class="iconSuccess"
+          src="../css/data/icons/check_circle.png"
+          alt=""
+        />
+        <span class="textSuccess">Thành công</span>
+      </div>
+    </div>
     <div class="overlayModal2"></div>
     <div class="overlayModal"></div>
     <div class="overlayModal3"></div>

@@ -1,4 +1,3 @@
-
 let listBoards = document.querySelector(".listBoards");
 let listStarred = document.querySelector(".listStarred");
 let listClosed = document.querySelector(".listClosed");
@@ -15,13 +14,15 @@ let closeBoards = document.querySelector(".closeBoards");
 let headerContent = document.querySelector(".headerContent");
 let headerStarred = document.querySelector(".headerStarred");
 let headerClosed = document.querySelector(".headerClosed");
-let backgroundItems = Array.from(document.querySelectorAll(".backgroundCreateInfo"));
+let backgroundItems = Array.from(
+  document.querySelectorAll(".backgroundCreateInfo")
+);
 let colorItems = Array.from(document.querySelectorAll(".colorCreateInfo"));
 let allBackgroundItems = backgroundItems.concat(colorItems);
 
 let checkEditBoard = false;
 let backgroundId = -1;
-let currentView = 'all';
+let currentView = "all";
 
 // Logic creare board
 function createBoard(board, checkEdit) {
@@ -29,7 +30,11 @@ function createBoard(board, checkEdit) {
   div.className = "boardInfo";
   div.style.background = board.color;
   div.innerHTML = `
-    ${board.backdrop ? `<img class="backgroundBoard" src="${board.backdrop}" alt="" />` : ""}
+    ${
+      board.backdrop
+        ? `<img class="backgroundBoard" src="${board.backdrop}" alt="" />`
+        : ""
+    }
     <div class="overlay"></div>
     <span class="titleBoard">${board.title}</span>
       <div class="editBoard">
@@ -37,18 +42,18 @@ function createBoard(board, checkEdit) {
         <span class="textEdit">Edit this board</span>
       </div>`;
 
-  if (checkEdit){
-    div.addEventListener("mouseover", function() {
+  if (checkEdit) {
+    div.addEventListener("mouseover", function () {
       div.querySelector(".editBoard").style.display = "flex";
     });
-    div.addEventListener("mouseout", function(){
+    div.addEventListener("mouseout", function () {
       div.querySelector(".editBoard").style.display = "none";
     });
-    div.querySelector(".editBoard").addEventListener("click", function(){
-      boardId = board.id     
-      openModal(true)
+    div.querySelector(".editBoard").addEventListener("click", function () {
+      boardId = board.id;
+      openModal(true);
     });
-    div.querySelector(".overlay").addEventListener("click", function(){
+    div.querySelector(".overlay").addEventListener("click", function () {
       boardId = board.id;
       saveData();
       window.location.href = "../pages/board.html";
@@ -61,13 +66,17 @@ function createBoard(board, checkEdit) {
 // Logic render boards vào containerList
 function renderBoards(boards, containerList, checkEdit, buttonCreate = null) {
   if (buttonCreate) {
-    Array.from(containerList.querySelectorAll(".boardInfo")).forEach(el => el.remove());
+    Array.from(containerList.querySelectorAll(".boardInfo")).forEach((el) =>
+      el.remove()
+    );
   } else {
     containerList.innerHTML = "";
   }
-  boards.forEach(board => {
+  boards.forEach((board) => {
     let boardElement = createBoard(board, checkEdit);
-    buttonCreate ? containerList.insertBefore(boardElement, buttonCreate) : containerList.appendChild(boardElement);
+    buttonCreate
+      ? containerList.insertBefore(boardElement, buttonCreate)
+      : containerList.appendChild(boardElement);
   });
 }
 
@@ -75,9 +84,11 @@ function renderBoards(boards, containerList, checkEdit, buttonCreate = null) {
 function setView(view) {
   currentView = view;
   let createBoard = listBoards.querySelector(".createBoard");
-  let normalBoardsList = user.boards.filter(board => !board.is_closed && !board.is_starred);
-  let starredBoardsList = user.boards.filter(board => board.is_starred);
-  let closedBoardsList = user.boards.filter(board => board.is_closed);
+  let normalBoardsList = user.boards.filter(
+    (board) => !board.is_closed && !board.is_starred
+  );
+  let starredBoardsList = user.boards.filter((board) => board.is_starred);
+  let closedBoardsList = user.boards.filter((board) => board.is_closed);
 
   if (view == "all") {
     listBoards.style.display = "flex";
@@ -128,13 +139,15 @@ function openModal(isEdit) {
   modalCreateBoard.classList.add("displayModal");
 
   if (isEdit) {
-    let board = user.boards.find(board => board.id === boardId);
+    let board = user.boards.find((board) => board.id === boardId);
     inputTitle.value = board.title;
     removeSelectedClass();
     let currentBackground = board.backdrop || board.color;
     backgroundId = dataBackgrounds.indexOf(currentBackground);
     if (backgroundId !== -1) {
-      allBackgroundItems[backgroundId].querySelector(".selectIconCreate").classList.add("selectedModalCreate");
+      allBackgroundItems[backgroundId]
+        .querySelector(".selectIconCreate")
+        .classList.add("selectedModalCreate");
     }
     textHeaderCreate.textContent = "Update board";
     createNewBoardBtn.textContent = "Save";
@@ -151,12 +164,13 @@ function openModal(isEdit) {
   allBackgroundItems.forEach((item, index) => {
     item.addEventListener("click", () => {
       removeSelectedClass();
-      item.querySelector(".selectIconCreate").classList.add("selectedModalCreate");
+      item
+        .querySelector(".selectIconCreate")
+        .classList.add("selectedModalCreate");
       backgroundId = index;
     });
   });
 }
-
 
 function closeModal() {
   overlayModalCreate.classList.remove("show");
@@ -164,7 +178,7 @@ function closeModal() {
 }
 
 // Logic btn create board
-createNewBoard.addEventListener("click", function() {
+createNewBoard.addEventListener("click", function () {
   let noticeTitle = document.querySelector(".noticeTitle");
   if (inputTitle.value === "") {
     noticeTitle.textContent = "⛔ Title cannot be blank!";
@@ -172,17 +186,28 @@ createNewBoard.addEventListener("click", function() {
     return;
   }
 
-  let backdropInfo = backgroundId >= 0 && backgroundId < 4 ? dataBackgrounds[backgroundId] : (backgroundId === -1 ? dataBackgrounds[0] : null);
-  let colorInfo = backgroundId >= 4 && backgroundId < 10 ? dataBackgrounds[backgroundId] : null;
+  let backdropInfo =
+    backgroundId >= 0 && backgroundId < 4
+      ? dataBackgrounds[backgroundId]
+      : backgroundId === -1
+      ? dataBackgrounds[0]
+      : null;
+  let colorInfo =
+    backgroundId >= 4 && backgroundId < 10
+      ? dataBackgrounds[backgroundId]
+      : null;
 
   if (checkEditBoard) {
-    let editBoard = user.boards.find(board => board.id === boardId);
+    let editBoard = user.boards.find((board) => board.id === boardId);
     editBoard.title = inputTitle.value;
     editBoard.backdrop = backdropInfo;
     editBoard.color = colorInfo;
   } else {
     let newBoard = {
-      id: user.boards.length > 0 ? user.boards[user.boards.length - 1].id + 1 : 101,
+      id:
+        user.boards.length > 0
+          ? user.boards[user.boards.length - 1].id + 1
+          : 101,
       title: inputTitle.value,
       description: false,
       backdrop: backdropInfo || dataBackgrounds[0],
@@ -202,25 +227,28 @@ createNewBoard.addEventListener("click", function() {
 
 // Logic remove selected background
 function removeSelectedClass() {
-  allBackgroundItems.forEach(item => {
-    item.querySelector(".selectIconCreate").classList.remove("selectedModalCreate");
+  allBackgroundItems.forEach((item) => {
+    item
+      .querySelector(".selectIconCreate")
+      .classList.remove("selectedModalCreate");
   });
 }
 
 // Logic click sidebar
-btnCreateBoard.addEventListener("click", function() {
-  openModal(false)
+btnCreateBoard.addEventListener("click", function () {
+  openModal(false);
 });
-boardsSidebar.addEventListener("click", function() {
-  setView("all"); 
+boardsSidebar.addEventListener("click", function () {
+  setView("all");
   closeSidebar();
 });
-starredBoards.addEventListener("click", function() {
-  setView("starred"); 
+starredBoards.addEventListener("click", function () {
+  setView("starred");
   closeSidebar();
 });
-closeBoards.addEventListener("click", function() {
-  setView("closed"); closeSidebar();
+closeBoards.addEventListener("click", function () {
+  setView("closed");
+  closeSidebar();
 });
 
 // Check open
@@ -241,7 +269,7 @@ let listDashboardMedia = document.querySelector(".listDashboardMedia");
 let overlaySidebar = document.querySelector(".overlaySidebar");
 let sidebar = document.querySelector(".sidebar");
 
-listDashboardMedia.addEventListener("click", function(){
+listDashboardMedia.addEventListener("click", function () {
   overlaySidebar.classList.add("showOverlaySidebar");
   sidebar.classList.add("displaySidebar");
   sidebar.classList.remove("hiddenSidebar");

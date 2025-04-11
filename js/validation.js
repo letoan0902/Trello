@@ -111,7 +111,6 @@ if (listId) {
   window.location.href = "../pages/index.html";
 }
 
-
 function checkData(value, type, value2) {
   if (type == "email") {
     let regexMail =
@@ -165,7 +164,7 @@ function checkData(value, type, value2) {
     } else {
       return "valid";
     }
-  } else if (type == "description"){
+  } else if (type == "description") {
     if (value == "") {
       return "Mô tả chi tiết không được để trống";
     } else {
@@ -184,7 +183,7 @@ let dataBackgrounds = [
   "linear-gradient(123deg, #00ff2f 0%, #00ffc8 100%)",
   "linear-gradient(123deg, #00ffe5 0%, #004bfa 100%)",
   "linear-gradient(123deg, #ffa200 0%, #edfa00 100%)",
-  "linear-gradient(123deg, #ff00ea 0%, #fa0c00 100%)"
+  "linear-gradient(123deg, #ff00ea 0%, #fa0c00 100%)",
 ];
 
 let dataColorLabel = [
@@ -197,17 +196,14 @@ let dataColorLabel = [
   "#F5CD47",
   "#FEA362",
   "#F87168",
-  "#9F8FEF"
+  "#9F8FEF",
 ];
-
-
-
 
 saveData();
 function saveData() {
   localStorage.setItem("users", JSON.stringify(users));
   if (user) {
-    let userIndex = users.findIndex(element => element.id === user.id);
+    let userIndex = users.findIndex((element) => element.id === user.id);
     if (userIndex !== -1) {
       users[userIndex] = { ...user };
     }

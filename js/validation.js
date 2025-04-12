@@ -54,11 +54,8 @@ if (user) {
   user = JSON.parse(user);
 } else {
   let currentPath = window.location.pathname;
-
-  if (
-    currentPath !== "/Project-FrontEnd-Trello/pages/signup.html" &&
-    currentPath !== "/Project-FrontEnd-Trello/pages/login.html"
-  ) {
+  let filename = currentPath.split('/').pop();
+  if (filename != "signup.html" && filename != "login.html") {
     window.location.href = "../pages/login.html";
   }
 }

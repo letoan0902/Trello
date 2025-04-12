@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let mainBoard = document.querySelector(".mainBoard");
 let headerBoard = document.querySelector(".headerBoard");
+
 //Logic render board
 function changeId(newId) {
   boardId = newId;

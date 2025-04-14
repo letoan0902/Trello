@@ -161,6 +161,7 @@ function changeId(newId) {
   block2.addEventListener("click", function () {
     modalFilter.classList.add("displayModalFilter");
     overlayModal.classList.add("show");
+    renderFilterLabelColors();
   });
 
   //Logic create btn crete list
@@ -325,6 +326,8 @@ function changeId(newId) {
       taskInfo.className = "taskInfo";
       taskInfo.setAttribute("data-status", task.status);
       taskInfo.setAttribute("data-due-date", task.due_date || "");
+      let labelColors = task.tag.map(tag => tag.color).join(",");
+      taskInfo.setAttribute("data-label", labelColors);
       taskInfo.innerHTML = `
       ${
         task.status == "pending"
@@ -1037,11 +1040,66 @@ checkboxDueDate.forEach((checkbox) => {
   });
 });
 
+function getUniqueLabelColors(boardId) {
+  let board = listBoards.find(b => b.id === boardId);
+  let uniqueColors = new Set();
+  board.lists.forEach(list => {
+    list.tasks.forEach(task => {
+      task.tag.forEach(tag => {
+        uniqueColors.add(tag.color);
+      });
+    });
+  });
+  return Array.from(uniqueColors);
+}
+
+
+let labelsContainer = document.querySelector('.labelsContainer');
+function renderFilterLabelColors() {
+  labelsContainer.innerHTML = '';
+
+
+  let noLabelBlock = document.createElement('div');
+  noLabelBlock.className = 'blockLabel';
+  noLabelBlock.innerHTML = `
+    <input class="checkboxFilter" type="checkbox" name="filterLabel" value="no-labels" />
+    <span class="blockNoLabel">
+      <img class="iconNoLabel" src="../css/data/icons/nolabel-filter.png" alt="" />
+    </span>
+    <span class="textFilterNo">No labels</span>
+  `;
+  labelsContainer.appendChild(noLabelBlock);
+  noLabelBlock.querySelector('.checkboxFilter').addEventListener('change', function() {
+    applyFilter();
+  });
+
+  // Render label filter
+  let uniqueColors = getUniqueLabelColors(boardId);
+  uniqueColors.forEach(color => {
+    let blockLabel = document.createElement('div');
+    blockLabel.className = 'blockLabel';
+    blockLabel.innerHTML = `
+      <input class="checkboxFilter" type="checkbox" name="filterLabel" value="${color}" />
+      <span class="listLabelFilter" style="background-color: ${color}"></span>
+    `;
+    labelsContainer.appendChild(blockLabel);
+    blockLabel.querySelector('.checkboxFilter').addEventListener('change', function() {
+      applyFilter();
+    });
+  });
+}
+
+
+
+
+
+
 //Logic Filter
 function applyFilter() {
   let allTasks = document.querySelectorAll(".taskInfo");
   let now = new Date();
   let nextDay = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+  let selectedLabels = Array.from(document.querySelectorAll('input[name="filterLabel"]:checked')).map(cb => cb.value);
 
   allTasks.forEach((task) => {
     let taskStatus = task.getAttribute("data-status");
@@ -1050,6 +1108,8 @@ function applyFilter() {
 
     let dueDateStr = task.getAttribute("data-due-date");
     let dueDate = dueDateStr ? new Date(dueDateStr) : null;
+
+    let taskLabelColors = task.getAttribute("data-label") ? task.getAttribute("data-label").split(",") : [];
 
     task.style.display = "flex";
 
@@ -1078,6 +1138,21 @@ function applyFilter() {
         }
       });
       if (!checkDisplay) {
+        task.style.display = "none";
+      }
+    }
+
+    if (selectedLabels.length > 0) {
+      let labelFilterPass = false;
+
+      if (selectedLabels.includes("no-labels") && taskLabelColors.length === 0) {
+        labelFilterPass = true;
+      }
+      
+      if (selectedLabels.some(color => color !== "no-labels" && taskLabelColors.includes(color))) {
+        labelFilterPass = true;
+      }
+      if (!labelFilterPass) {
         task.style.display = "none";
       }
     }

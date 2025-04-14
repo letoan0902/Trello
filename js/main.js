@@ -210,7 +210,7 @@ createNewBoard.addEventListener("click", function () {
           : 101,
       title: inputTitle.value,
       description: false,
-      backdrop: backdropInfo || dataBackgrounds[0],
+      backdrop: backdropInfo,
       color: colorInfo,
       is_starred: false,
       is_closed: false,

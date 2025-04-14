@@ -607,6 +607,13 @@
   margin-left: 16px;
   margin-right: 8px;
 }
+.labelsContainer {
+  max-height: 155px;
+  overflow-y: auto;
+}
+.textLabels{
+  margin-bottom: 0px;
+}
 .blockLabel {
   height: 40px;
   padding-left: 8px;

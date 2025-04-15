@@ -48,8 +48,15 @@ if (users) {
     },
   ];
 }
+let openStarredBoards = localStorage.getItem("openStarredBoards");
+let openClosedBoards = localStorage.getItem("openClosedBoards");
+let openBoards = localStorage.getItem("openBoards");
 
 let user = localStorage.getItem("user");
+let boardId = localStorage.getItem("boardId");
+let taskId = localStorage.getItem("taskId");
+let listId = localStorage.getItem("listId");
+
 if (user) {
   user = JSON.parse(user);
 } else {
@@ -60,28 +67,24 @@ if (user) {
   }
 }
 
-let openStarredBoards = localStorage.getItem("openStarredBoards");
 if (openStarredBoards) {
   openStarredBoards = JSON.parse(openStarredBoards);
 } else {
   openStarredBoards = false;
 }
 
-let openClosedBoards = localStorage.getItem("openClosedBoards");
 if (openClosedBoards) {
   openClosedBoards = JSON.parse(openClosedBoards);
 } else {
   openClosedBoards = false;
 }
 
-let openBoards = localStorage.getItem("openBoards");
 if (openBoards) {
   openBoards = JSON.parse(openBoards);
 } else {
   openBoards = false;
 }
 
-let boardId = localStorage.getItem("boardId");
 if (boardId) {
   boardId = JSON.parse(boardId);
 } else {
@@ -90,7 +93,6 @@ if (boardId) {
   window.location.href = "../pages/index.html";
 }
 
-let taskId = localStorage.getItem("taskId");
 if (taskId) {
   taskId = JSON.parse(taskId);
 } else {
@@ -99,7 +101,6 @@ if (taskId) {
   window.location.href = "../pages/index.html";
 }
 
-let listId = localStorage.getItem("listId");
 if (listId) {
   listId = JSON.parse(listId);
 } else {
@@ -137,6 +138,9 @@ function checkData(value, type, value2) {
       return "Sai mật khẩu";
     } else {
       localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("boardId", JSON.stringify(-1));
+      localStorage.setItem("taskId", JSON.stringify(-1));
+      localStorage.setItem("listId", JSON.stringify(-1));
       return "valid";
     }
   } else if (type == "username") {

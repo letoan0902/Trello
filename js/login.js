@@ -13,7 +13,7 @@ if (user) {
   window.location = "../pages/index.html";
 }
 
-btnSignIn.addEventListener("click", function () {
+btnSignIn.addEventListener("click", function () {  
   let flag = 0;
   textBodyError.innerHTML = ``;
   let checkEmail = checkData(inputEmail.value.trim(), "email");

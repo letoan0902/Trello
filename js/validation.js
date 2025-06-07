@@ -5,79 +5,110 @@ if (users) {
   users = [
     {
       id: 1,
-      name: "Nguyễn Tài Duy",
-      gmail: "Duynguyen010503@gmail.com",
-      address: "Đông Anh, Hà Nội",
-      streaks: 54,
-      rank: 10,
-      exp: 54,
-      kaiwaAI: {
-        id: 100,
-        name: 
-      }
-      course: []
-    }
+      username: "letoan242",
+      email: "trinhhanh261293@gmail.com",
+      password: "12345678",
+      created_at: "2025-02-28T12:00:00Z",
+      boards: [
+        {
+          id: 101,
+          title: "Dự án Website",
+          description: "Quản lý tiến độ dự án website",
+          backdrop:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/640px-Cat_August_2010-4.jpg",
+          is_starred: true,
+          is_closed: false,
+          created_at: "2025-02-28T12:30:00Z",
+          lists: [
+            {
+              id: 201,
+              title: "Việc cần làm",
+              created_at: "2025-02-28T13:00:00Z",
+              tasks: [
+                {
+                  id: 301,
+                  title: "Thiết kế giao diện",
+                  description: "Tạo wireframe cho trang chủ",
+                  status: "pending",
+                  due_date: "2025-03-05T23:59:59Z",
+                  tag: [
+                    {
+                      id: 401,
+                      content: "Urgent",
+                      color: "#fff",
+                    },
+                  ],
+                  created_at: "2025-02-28T13:30:00Z",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ];
 }
-let openStarredBoards = localStorage.getItem("openStarredBoards");
-let openClosedBoards = localStorage.getItem("openClosedBoards");
-let openBoards = localStorage.getItem("openBoards");
 
 let user = localStorage.getItem("user");
-let boardId = localStorage.getItem("boardId");
-let taskId = localStorage.getItem("taskId");
-let listId = localStorage.getItem("listId");
-
 if (user) {
   user = JSON.parse(user);
 } else {
   let currentPath = window.location.pathname;
-  let filename = currentPath.split('/').pop();
-  if (filename != "signup.html" && filename != "login.html") {
+
+  if (
+    currentPath !== "/Project-Trello%20copy/pages/signup.html" &&
+    currentPath !== "/Project-Trello%20copy/pages/login.html"
+  ) {
     window.location.href = "../pages/login.html";
   }
 }
 
+let openStarredBoards = localStorage.getItem("openStarredBoards");
 if (openStarredBoards) {
   openStarredBoards = JSON.parse(openStarredBoards);
 } else {
   openStarredBoards = false;
 }
 
+let openClosedBoards = localStorage.getItem("openClosedBoards");
 if (openClosedBoards) {
   openClosedBoards = JSON.parse(openClosedBoards);
 } else {
   openClosedBoards = false;
 }
 
+let openBoards = localStorage.getItem("openBoards");
 if (openBoards) {
   openBoards = JSON.parse(openBoards);
 } else {
   openBoards = false;
 }
 
+let boardId = localStorage.getItem("boardId");
 if (boardId) {
   boardId = JSON.parse(boardId);
 } else {
   boardId = -1;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = "index.html";
 }
 
+let taskId = localStorage.getItem("taskId");
 if (taskId) {
   taskId = JSON.parse(taskId);
 } else {
   taskId = -1;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = "index.html";
 }
 
+let listId = localStorage.getItem("listId");
 if (listId) {
   listId = JSON.parse(listId);
 } else {
   listId = -1;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = "index.html";
 }
 
 function checkData(value, type, value2) {
@@ -109,9 +140,6 @@ function checkData(value, type, value2) {
       return "Sai mật khẩu";
     } else {
       localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("boardId", JSON.stringify(-1));
-      localStorage.setItem("taskId", JSON.stringify(-1));
-      localStorage.setItem("listId", JSON.stringify(-1));
       return "valid";
     }
   } else if (type == "username") {
@@ -142,21 +170,14 @@ function checkData(value, type, value2) {
     } else {
       return "valid";
     }
-  } else if(type=="checktitleboard"){
-    let boardCheck = user.boards.find(board => board.title == value);
-    if(boardCheck){
-      return "Tiêu đề không được trùng";
-    } else {
-      return "valid";
-    }
   }
 }
 
 let dataBackgrounds = [
-  "../css/data/images/board1.jpg",
-  "../css/data/images/board2.jpg",
-  "../css/data/images/board3.jpg",
-  "../css/data/images/board4.jpg",
+  "css/data/images/board1.jpg",
+  "css/data/images/board2.jpg",
+  "css/data/images/board3.jpg",
+  "css/data/images/board4.jpg",
   "linear-gradient(123deg, #ffb100 0%, #fa0c00 100%)",
   "linear-gradient(123deg, #2609ff 0%, #d20cff 100%)",
   "linear-gradient(123deg, #00ff2f 0%, #00ffc8 100%)",

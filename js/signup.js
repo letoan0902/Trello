@@ -49,9 +49,9 @@ btnSignUp.addEventListener("click", function () {
     flag = 1;
   }
   if (flag == 1) {
-    errorMessage.classList.add("display");
+    errorMessage.classList.add("displayMessage");
     setTimeout(() => {
-      errorMessage.classList.remove("display");
+      errorMessage.classList.remove("displayMessage");
     }, 1500);
   } else {
     let newUser = {
@@ -64,10 +64,10 @@ btnSignUp.addEventListener("click", function () {
     };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
-    succcessSignUp.classList.add("display");
+    succcessSignUp.classList.add("displayMessage");
     setTimeout(() => {
-      succcessSignUp.classList.remove("display");
-      window.location = "../pages/login.html";
+      succcessSignUp.classList.remove("displayMessage");
+      window.location = getRedirectPath("login.html");
     }, 1000);
   }
 });

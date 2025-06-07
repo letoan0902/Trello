@@ -326,7 +326,7 @@ function changeId(newId) {
       taskInfo.className = "taskInfo";
       taskInfo.setAttribute("data-status", task.status);
       taskInfo.setAttribute("data-due-date", task.due_date || "");
-      let labelColors = task.tag.map(tag => tag.color).join(",");
+      let labelColors = task.tag.map((tag) => tag.color).join(",");
       taskInfo.setAttribute("data-label", labelColors);
       taskInfo.innerHTML = `
       ${
@@ -472,17 +472,17 @@ let closeBoards = document.querySelector(".closeBoards");
 boardsSidebar.addEventListener("click", function () {
   openBoards = true;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = getRedirectPath("index.html");
 });
 starredBoards.addEventListener("click", function () {
   openStarredBoards = true;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = getRedirectPath("index.html");
 });
 closeBoards.addEventListener("click", function () {
   openClosedBoards = true;
   saveData();
-  window.location.href = "../pages/index.html";
+  window.location.href = getRedirectPath("index.html");
 });
 
 cancelDetail.addEventListener("click", function () {
@@ -623,7 +623,7 @@ labelEdit.addEventListener("click", function () {
 
 //Logic show modal create label
 btnLabel.addEventListener("click", function () {
-  labelId=0;
+  labelId = 0;
   overlayModal3.classList.add("show");
   modalCreateLabel.classList.add("displayModalCreateLabel");
   removeSelectLabel();
@@ -897,7 +897,7 @@ btnAngreeCLoseBoard.addEventListener("click", function () {
       renderListBoards();
       changeId(boardId);
     } else {
-      window.location.href = "../pages/index.html";
+      window.location.href = getRedirectPath("index.html");
     }
   } else if (typeClose == "removeTask") {
     let boardCurrent = listBoards.find((element) => element.id == boardId);
@@ -1042,11 +1042,11 @@ checkboxDueDate.forEach((checkbox) => {
 });
 
 function getUniqueLabelColors(boardId) {
-  let board = listBoards.find(b => b.id === boardId);
+  let board = listBoards.find((b) => b.id === boardId);
   let uniqueColors = new Set();
-  board.lists.forEach(list => {
-    list.tasks.forEach(task => {
-      task.tag.forEach(tag => {
+  board.lists.forEach((list) => {
+    list.tasks.forEach((task) => {
+      task.tag.forEach((tag) => {
         uniqueColors.add(tag.color);
       });
     });
@@ -1054,14 +1054,12 @@ function getUniqueLabelColors(boardId) {
   return Array.from(uniqueColors);
 }
 
-
-let labelsContainer = document.querySelector('.labelsContainer');
+let labelsContainer = document.querySelector(".labelsContainer");
 function renderFilterLabelColors() {
-  labelsContainer.innerHTML = '';
+  labelsContainer.innerHTML = "";
 
-
-  let noLabelBlock = document.createElement('div');
-  noLabelBlock.className = 'blockLabel';
+  let noLabelBlock = document.createElement("div");
+  noLabelBlock.className = "blockLabel";
   noLabelBlock.innerHTML = `
     <input class="checkboxFilter" type="checkbox" name="filterLabel" value="no-labels" />
     <span class="blockNoLabel">
@@ -1070,37 +1068,38 @@ function renderFilterLabelColors() {
     <span class="textFilterNo">No labels</span>
   `;
   labelsContainer.appendChild(noLabelBlock);
-  noLabelBlock.querySelector('.checkboxFilter').addEventListener('change', function() {
-    applyFilter();
-  });
+  noLabelBlock
+    .querySelector(".checkboxFilter")
+    .addEventListener("change", function () {
+      applyFilter();
+    });
 
   // Render label filter
   let uniqueColors = getUniqueLabelColors(boardId);
-  uniqueColors.forEach(color => {
-    let blockLabel = document.createElement('div');
-    blockLabel.className = 'blockLabel';
+  uniqueColors.forEach((color) => {
+    let blockLabel = document.createElement("div");
+    blockLabel.className = "blockLabel";
     blockLabel.innerHTML = `
       <input class="checkboxFilter" type="checkbox" name="filterLabel" value="${color}" />
       <span class="listLabelFilter" style="background-color: ${color}"></span>
     `;
     labelsContainer.appendChild(blockLabel);
-    blockLabel.querySelector('.checkboxFilter').addEventListener('change', function() {
-      applyFilter();
-    });
+    blockLabel
+      .querySelector(".checkboxFilter")
+      .addEventListener("change", function () {
+        applyFilter();
+      });
   });
 }
-
-
-
-
-
 
 //Logic Filter
 function applyFilter() {
   let allTasks = document.querySelectorAll(".taskInfo");
   let now = new Date();
   let nextDay = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-  let selectedLabels = Array.from(document.querySelectorAll('input[name="filterLabel"]:checked')).map(cb => cb.value);
+  let selectedLabels = Array.from(
+    document.querySelectorAll('input[name="filterLabel"]:checked')
+  ).map((cb) => cb.value);
 
   allTasks.forEach((task) => {
     let taskStatus = task.getAttribute("data-status");
@@ -1110,7 +1109,9 @@ function applyFilter() {
     let dueDateStr = task.getAttribute("data-due-date");
     let dueDate = dueDateStr ? new Date(dueDateStr) : null;
 
-    let taskLabelColors = task.getAttribute("data-label") ? task.getAttribute("data-label").split(",") : [];
+    let taskLabelColors = task.getAttribute("data-label")
+      ? task.getAttribute("data-label").split(",")
+      : [];
 
     task.style.display = "flex";
 
@@ -1144,11 +1145,18 @@ function applyFilter() {
     if (selectedLabels.length > 0) {
       let labelFilterPass = false;
 
-      if (selectedLabels.includes("no-labels") && taskLabelColors.length === 0) {
+      if (
+        selectedLabels.includes("no-labels") &&
+        taskLabelColors.length === 0
+      ) {
         labelFilterPass = true;
       }
-      
-      if (selectedLabels.some(color => color !== "no-labels" && taskLabelColors.includes(color))) {
+
+      if (
+        selectedLabels.some(
+          (color) => color !== "no-labels" && taskLabelColors.includes(color)
+        )
+      ) {
         labelFilterPass = true;
       }
       if (!labelFilterPass) {

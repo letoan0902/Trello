@@ -49,6 +49,22 @@ if (users) {
   ];
 }
 
+// Helper function để tạo đường dẫn đúng cho GitHub Pages
+function getBasePath() {
+  let path = window.location.pathname;
+  // Nếu đang ở GitHub Pages (có tên repository trong path)
+  if (path.includes("/Trello/")) {
+    return "/Trello";
+  }
+  // Nếu đang ở localhost hoặc custom domain
+  return "";
+}
+
+function getRedirectPath(page) {
+  const basePath = getBasePath();
+  return `${basePath}/pages/${page}`;
+}
+
 let user = localStorage.getItem("user");
 if (user) {
   user = JSON.parse(user);
@@ -56,10 +72,10 @@ if (user) {
   let currentPath = window.location.pathname;
 
   if (
-    currentPath !== "/Project-Trello%20copy/pages/signup.html" &&
-    currentPath !== "/Project-Trello%20copy/pages/login.html"
+    !currentPath.includes("signup.html") &&
+    !currentPath.includes("login.html")
   ) {
-    window.location.href = "../pages/login.html";
+    window.location.href = getRedirectPath("login.html");
   }
 }
 
@@ -89,8 +105,6 @@ if (boardId) {
   boardId = JSON.parse(boardId);
 } else {
   boardId = -1;
-  saveData();
-  window.location.href = "index.html";
 }
 
 let taskId = localStorage.getItem("taskId");
@@ -98,8 +112,6 @@ if (taskId) {
   taskId = JSON.parse(taskId);
 } else {
   taskId = -1;
-  saveData();
-  window.location.href = "index.html";
 }
 
 let listId = localStorage.getItem("listId");
@@ -107,8 +119,15 @@ if (listId) {
   listId = JSON.parse(listId);
 } else {
   listId = -1;
+}
+
+// Kiểm tra và redirect nếu cần (sau khi đã khởi tạo tất cả biến)
+let currentPath = window.location.pathname;
+
+// Chỉ kiểm tra boardId cho trang board.html (cần boardId để hoạt động)
+if (currentPath.includes("board.html") && boardId === -1) {
   saveData();
-  window.location.href = "index.html";
+  window.location.href = getRedirectPath("index.html");
 }
 
 function checkData(value, type, value2) {
@@ -164,6 +183,16 @@ function checkData(value, type, value2) {
     } else {
       return "valid";
     }
+  } else if (type == "checktitleboard") {
+    if (value == "") {
+      return "⛔ Tiêu đề board không được để trống!";
+    } else if (value.length < 3) {
+      return "⛔ Tiêu đề board phải có ít nhất 3 ký tự!";
+    } else if (value.length > 100) {
+      return "⛔ Tiêu đề board không được vượt quá 100 ký tự!";
+    } else {
+      return "valid";
+    }
   } else if (type == "description") {
     if (value == "") {
       return "Mô tả chi tiết không được để trống";
@@ -174,10 +203,10 @@ function checkData(value, type, value2) {
 }
 
 let dataBackgrounds = [
-  "css/data/images/board1.jpg",
-  "css/data/images/board2.jpg",
-  "css/data/images/board3.jpg",
-  "css/data/images/board4.jpg",
+  `${getBasePath()}/css/data/images/board1.jpg`,
+  `${getBasePath()}/css/data/images/board2.jpg`,
+  `${getBasePath()}/css/data/images/board3.jpg`,
+  `${getBasePath()}/css/data/images/board4.jpg`,
   "linear-gradient(123deg, #ffb100 0%, #fa0c00 100%)",
   "linear-gradient(123deg, #2609ff 0%, #d20cff 100%)",
   "linear-gradient(123deg, #00ff2f 0%, #00ffc8 100%)",
@@ -199,7 +228,6 @@ let dataColorLabel = [
   "#9F8FEF",
 ];
 
-saveData();
 function saveData() {
   localStorage.setItem("users", JSON.stringify(users));
   if (user) {
@@ -217,3 +245,5 @@ function saveData() {
   localStorage.setItem("openClosedBoards", JSON.stringify(openClosedBoards));
   localStorage.setItem("openBoards", JSON.stringify(openBoards));
 }
+
+saveData();

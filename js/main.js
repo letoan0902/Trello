@@ -56,7 +56,7 @@ function createBoard(board, checkEdit) {
     div.querySelector(".overlay").addEventListener("click", function () {
       boardId = board.id;
       saveData();
-      window.location.href = "../pages/board.html";
+      window.location.href = getRedirectPath("board.html");
     });
   }
 
@@ -156,18 +156,39 @@ function openModal(isEdit) {
     backgroundId = 0;
     removeSelectedClass();
     allBackgroundItems[backgroundId]
-        .querySelector(".selectIconCreate")
-        .classList.add("selectedModalCreate");
+      .querySelector(".selectIconCreate")
+      .classList.add("selectedModalCreate");
     textHeaderCreate.textContent = "Create board";
     createNewBoardBtn.textContent = "Create";
   }
 
+  // Remove existing event listeners by cloning elements
+  let newCloseModalCreate = closeModalCreate.cloneNode(true);
+  closeModalCreate.parentNode.replaceChild(
+    newCloseModalCreate,
+    closeModalCreate
+  );
+  closeModalCreate = newCloseModalCreate;
+
+  let newCloseModalCreateFooter = closeModalCreateFooter.cloneNode(true);
+  closeModalCreateFooter.parentNode.replaceChild(
+    newCloseModalCreateFooter,
+    closeModalCreateFooter
+  );
+  closeModalCreateFooter = newCloseModalCreateFooter;
+
   closeModalCreate.addEventListener("click", closeModal);
   closeModalCreateFooter.addEventListener("click", closeModal);
+
+  // Remove existing listeners and add new ones for background items
   allBackgroundItems.forEach((item, index) => {
-    item.addEventListener("click", () => {
+    let newItem = item.cloneNode(true);
+    item.parentNode.replaceChild(newItem, item);
+    allBackgroundItems[index] = newItem;
+
+    newItem.addEventListener("click", () => {
       removeSelectedClass();
-      item
+      newItem
         .querySelector(".selectIconCreate")
         .classList.add("selectedModalCreate");
       backgroundId = index;
@@ -183,55 +204,54 @@ function closeModal() {
 // Logic btn create board
 createNewBoard.addEventListener("click", function () {
   let noticeTitle = document.querySelector(".noticeTitle");
-  let checkTitleBoard = checkData(inputTitle.value,"checktitleboard");
+  let checkTitleBoard = checkData(inputTitle.value, "checktitleboard");
   if (inputTitle.value === "") {
     noticeTitle.textContent = "⛔ Title cannot be blank!";
     noticeTitle.style.color = "red";
     return;
-  } else if(checkTitleBoard != "valid"){
+  } else if (checkTitleBoard != "valid") {
     noticeTitle.textContent = checkTitleBoard;
     noticeTitle.style.color = "red";
+    return;
   } else {
+    let backdropInfo =
+      backgroundId >= 0 && backgroundId < 4
+        ? dataBackgrounds[backgroundId]
+        : backgroundId === -1
+        ? dataBackgrounds[0]
+        : null;
+    let colorInfo =
+      backgroundId >= 4 && backgroundId < 10
+        ? dataBackgrounds[backgroundId]
+        : null;
 
-  let backdropInfo =
-    backgroundId >= 0 && backgroundId < 4
-      ? dataBackgrounds[backgroundId]
-      : backgroundId === -1
-      ? dataBackgrounds[0]
-      : null;
-  let colorInfo =
-    backgroundId >= 4 && backgroundId < 10
-      ? dataBackgrounds[backgroundId]
-      : null;
+    if (checkEditBoard) {
+      let editBoard = user.boards.find((board) => board.id === boardId);
+      editBoard.title = inputTitle.value;
+      editBoard.backdrop = backdropInfo;
+      editBoard.color = colorInfo;
+    } else {
+      let newBoard = {
+        id:
+          user.boards.length > 0
+            ? user.boards[user.boards.length - 1].id + 1
+            : 101,
+        title: inputTitle.value,
+        description: false,
+        backdrop: backdropInfo,
+        color: colorInfo,
+        is_starred: false,
+        is_closed: false,
+        created_at: new Date().toISOString(),
+        lists: [],
+      };
+      user.boards.push(newBoard);
+    }
 
-  if (checkEditBoard) {
-    let editBoard = user.boards.find((board) => board.id === boardId);
-    editBoard.title = inputTitle.value;
-    editBoard.backdrop = backdropInfo;
-    editBoard.color = colorInfo;
-  } else {
-    let newBoard = {
-      id:
-        user.boards.length > 0
-          ? user.boards[user.boards.length - 1].id + 1
-          : 101,
-      title: inputTitle.value,
-      description: false,
-      backdrop: backdropInfo,
-      color: colorInfo,
-      is_starred: false,
-      is_closed: false,
-      created_at: new Date().toISOString(),
-      lists: [],
-    };
-    user.boards.push(newBoard);
+    closeModal();
+    saveData();
+    setView(currentView);
   }
-  
-
-  closeModal();
-  saveData();
-  setView(currentView);
-}
 });
 
 // Logic remove selected background
@@ -298,5 +318,5 @@ function closeSidebar() {
 //Log out
 document.querySelector(".SignOut").addEventListener("click", () => {
   localStorage.removeItem("user");
-  window.location.href = "../pages/login.html";
+  window.location.href = getRedirectPath("login.html");
 });

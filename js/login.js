@@ -10,10 +10,10 @@ let textBodyError = document.querySelector(".textBodyError");
 let successSignIn = document.querySelector(".successSignIn");
 
 if (user) {
-  window.location = "../pages/index.html";
+  window.location = getRedirectPath("index.html");
 }
 
-btnSignIn.addEventListener("click", function () {  
+btnSignIn.addEventListener("click", function () {
   let flag = 0;
   textBodyError.innerHTML = ``;
   let checkEmail = checkData(inputEmail.value.trim(), "email");
@@ -56,7 +56,7 @@ btnSignIn.addEventListener("click", function () {
       successSignIn.classList.remove("displayMessage");
       user = users.find((element) => element.email == inputEmail.value.trim());
       saveData();
-      window.location = "../pages/index.html";
+      window.location = getRedirectPath("index.html");
     }, 1000);
   }
 });

@@ -1,5 +1,5 @@
 let currentStatusFilter = null;
-let currentDateFilters = [];
+let currentDateFilters = null;
 let currentKeyword = "";
 let overlayModal = document.querySelector(".overlayModal");
 let overlayModal2 = document.querySelector(".overlayModal2");
@@ -623,6 +623,7 @@ labelEdit.addEventListener("click", function () {
 
 //Logic show modal create label
 btnLabel.addEventListener("click", function () {
+  labelId=0;
   overlayModal3.classList.add("show");
   modalCreateLabel.classList.add("displayModalCreateLabel");
   removeSelectLabel();
@@ -733,14 +734,14 @@ function initializeCalendar(enableTime = false) {
 function parseDateString(dateStr, hasTime = false) {
   let parts = dateStr.split(" ");
   let dateParts = parts[0].split("/");
-  let day = parseInt(dateParts[0], 10);
-  let month = parseInt(dateParts[1], 10) - 1;
-  let year = parseInt(dateParts[2], 10);
+  let day = parseInt(dateParts[0]);
+  let month = parseInt(dateParts[1]) - 1;
+  let year = parseInt(dateParts[2]);
 
   if (hasTime && parts.length > 1) {
     let timeParts = parts[1].split(":");
-    let hours = parseInt(timeParts[0], 10);
-    let minutes = parseInt(timeParts[1], 10);
+    let hours = parseInt(timeParts[0]);
+    let minutes = parseInt(timeParts[1]);
     return new Date(year, month, day, hours, minutes);
   } else {
     return new Date(year, month, day);
@@ -1028,13 +1029,13 @@ checkboxDueDate.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     if (this.checked) {
       checkboxDueDate.forEach((cb) => {
-        if (cb !== this) cb.checked = false;
+        if (cb !== this) {
+          cb.checked = false;
+        }
       });
-      currentDateFilters.push(this.value);
+      currentDateFilters = this.value;
     } else {
-      currentDateFilters = currentDateFilters.filter(
-        (val) => val !== this.value
-      );
+      currentDateFilters = null;
     }
     applyFilter();
   });
@@ -1121,22 +1122,20 @@ function applyFilter() {
       task.style.display = "none";
     }
 
-    if (currentDateFilters.length > 0) {
+    if (currentDateFilters) {
       let checkDisplay = false;
-      currentDateFilters.forEach((value) => {
-        if (value === "nodate" && !dueDate) {
-          checkDisplay = true;
-        } else if (value === "overdue" && dueDate && dueDate < now) {
-          checkDisplay = true;
-        } else if (
-          value === "duenextday" &&
-          dueDate &&
-          dueDate > now &&
-          dueDate <= nextDay
-        ) {
-          checkDisplay = true;
-        }
-      });
+      if (currentDateFilters === "nodate" && !dueDate) {
+        checkDisplay = true;
+      } else if (currentDateFilters === "overdue" && dueDate && dueDate < now) {
+        checkDisplay = true;
+      } else if (
+        currentDateFilters === "duenextday" &&
+        dueDate &&
+        dueDate > now &&
+        dueDate <= nextDay
+      ) {
+        checkDisplay = true;
+      }
       if (!checkDisplay) {
         task.style.display = "none";
       }

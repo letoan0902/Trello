@@ -153,8 +153,11 @@ function openModal(isEdit) {
     createNewBoardBtn.textContent = "Save";
   } else {
     inputTitle.value = "";
-    backgroundId = -1;
+    backgroundId = 0;
     removeSelectedClass();
+    allBackgroundItems[backgroundId]
+        .querySelector(".selectIconCreate")
+        .classList.add("selectedModalCreate");
     textHeaderCreate.textContent = "Create board";
     createNewBoardBtn.textContent = "Create";
   }
@@ -180,11 +183,15 @@ function closeModal() {
 // Logic btn create board
 createNewBoard.addEventListener("click", function () {
   let noticeTitle = document.querySelector(".noticeTitle");
+  let checkTitleBoard = checkData(inputTitle.value,"checktitleboard");
   if (inputTitle.value === "") {
     noticeTitle.textContent = "⛔ Title cannot be blank!";
     noticeTitle.style.color = "red";
     return;
-  }
+  } else if(checkTitleBoard != "valid"){
+    noticeTitle.textContent = checkTitleBoard;
+    noticeTitle.style.color = "red";
+  } else {
 
   let backdropInfo =
     backgroundId >= 0 && backgroundId < 4
@@ -219,10 +226,12 @@ createNewBoard.addEventListener("click", function () {
     };
     user.boards.push(newBoard);
   }
+  
 
   closeModal();
   saveData();
   setView(currentView);
+}
 });
 
 // Logic remove selected background

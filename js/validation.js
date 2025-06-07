@@ -5,47 +5,18 @@ if (users) {
   users = [
     {
       id: 1,
-      username: "letoan242",
-      email: "trinhhanh261293@gmail.com",
-      password: "12345678",
-      created_at: "2025-02-28T12:00:00Z",
-      boards: [
-        {
-          id: 101,
-          title: "Dự án Website",
-          description: "Quản lý tiến độ dự án website",
-          backdrop:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/640px-Cat_August_2010-4.jpg",
-          is_starred: true,
-          is_closed: false,
-          created_at: "2025-02-28T12:30:00Z",
-          lists: [
-            {
-              id: 201,
-              title: "Việc cần làm",
-              created_at: "2025-02-28T13:00:00Z",
-              tasks: [
-                {
-                  id: 301,
-                  title: "Thiết kế giao diện",
-                  description: "Tạo wireframe cho trang chủ",
-                  status: "pending",
-                  due_date: "2025-03-05T23:59:59Z",
-                  tag: [
-                    {
-                      id: 401,
-                      content: "Urgent",
-                      color: "#fff",
-                    },
-                  ],
-                  created_at: "2025-02-28T13:30:00Z",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
+      name: "Nguyễn Tài Duy",
+      gmail: "Duynguyen010503@gmail.com",
+      address: "Đông Anh, Hà Nội",
+      streaks: 54,
+      rank: 10,
+      exp: 54,
+      kaiwaAI: {
+        id: 100,
+        name: 
+      }
+      course: []
+    }
   ];
 }
 let openStarredBoards = localStorage.getItem("openStarredBoards");
@@ -168,6 +139,13 @@ function checkData(value, type, value2) {
   } else if (type == "description") {
     if (value == "") {
       return "Mô tả chi tiết không được để trống";
+    } else {
+      return "valid";
+    }
+  } else if(type=="checktitleboard"){
+    let boardCheck = user.boards.find(board => board.title == value);
+    if(boardCheck){
+      return "Tiêu đề không được trùng";
     } else {
       return "valid";
     }

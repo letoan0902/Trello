@@ -1723,7 +1723,7 @@
 .listLabel {
   padding-top: 4px;
   margin-top: 8px;
-  max-height: 400px;
+  max-height: 185px;
   overflow-y: auto;
 }
 .labelInfo {
@@ -1750,9 +1750,13 @@
   align-items: center;
   background: #4bce97;
   padding-left: 12px;
+  padding-right: 40px;
   color: #164b35;
   font-weight: 500;
   line-height: 32px;
+  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .editLabel {
   display: flex;
